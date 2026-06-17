@@ -13,6 +13,7 @@ const Idea = require("./models/Idea");
 const GameTeam = require("./models/GameTeam");
 const GameState = require("./models/GameState");
 const HitCounter = require("./models/HitCounter");
+const CrosswordEntry = require("./models/CrosswordEntry");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -611,6 +612,113 @@ app.post("/api/hits/increment", async (req, res) => {
   } catch (error) {
     console.error("Error incrementing hits:", error);
     res.status(500).json({ success: false, error: "Failed to increment hits" });
+  }
+});
+
+// ===== CROSSWORD GAME ROUTES =====
+
+// Get crossword game status
+app.get("/api/crossword/status", async (req, res) => {
+  try {
+    let state = await GameState.findOne({ gameId: "crossword" });
+    if (!state) {
+      state = await GameState.create({ gameId: "crossword", isStarted: false });
+    }
+    res.json({ success: true, isStarted: state.isStarted });
+  } catch (error) {
+    console.error("Error fetching crossword status:", error);
+    res.status(500).json({ success: false, error: "Failed to fetch status" });
+  }
+});
+
+// Update crossword game status (admin)
+app.post("/api/crossword/status", async (req, res) => {
+  try {
+    const { action } = req.body;
+    const isStarted = action === "start";
+    const state = await GameState.findOneAndUpdate(
+      { gameId: "crossword" },
+      { isStarted },
+      { new: true, upsert: true }
+    );
+    res.json({ success: true, isStarted: state.isStarted });
+  } catch (error) {
+    console.error("Error updating crossword status:", error);
+    res.status(500).json({ success: false, error: "Failed to update status" });
+  }
+});
+
+// Register team for crossword puzzle
+app.post("/api/crossword/register", async (req, res) => {
+  try {
+    const { teamName, phone } = req.body;
+
+    if (!teamName || !teamName.trim()) {
+      return res.status(400).json({ success: false, error: "Team name is required." });
+    }
+    if (!/^[0-9]{10}$/.test(phone)) {
+      return res.status(400).json({ success: false, error: "A valid 10-digit phone number is required." });
+    }
+    const trimmedName = teamName.trim();
+    
+    let entry;
+    if (trimmedName.toLowerCase() === "team nucleus") {
+      // Demo admin team: reset their stats and allow them to play again
+      entry = await CrosswordEntry.findOneAndUpdate(
+        { teamName: trimmedName },
+        { phone, completedAt: null, timeTaken: null, accuracy: null },
+        { new: true, upsert: true }
+      );
+    } else {
+      // Normal team: Check if team already exists
+      const existingEntry = await CrosswordEntry.findOne({ teamName: trimmedName });
+      if (existingEntry) {
+        return res.status(403).json({ success: false, error: "This team has already played or is currently playing." });
+      }
+
+      entry = await CrosswordEntry.create({
+        teamName: trimmedName,
+        phone,
+      });
+    }
+
+    res.status(201).json({ success: true, entryId: entry._id });
+  } catch (error) {
+    console.error("Error registering crossword team:", error);
+    res.status(500).json({ success: false, error: "Failed to register team." });
+  }
+});
+
+// Save crossword completion stats
+app.post("/api/crossword/complete", async (req, res) => {
+  try {
+    const { entryId, timeTaken, accuracy } = req.body;
+
+    const entry = await CrosswordEntry.findByIdAndUpdate(
+      entryId,
+      { completedAt: new Date(), timeTaken, accuracy },
+      { new: true }
+    );
+
+    if (!entry) {
+      return res.status(404).json({ success: false, error: "Entry not found." });
+    }
+
+    res.json({ success: true, entry });
+  } catch (error) {
+    console.error("Error saving crossword completion:", error);
+    res.status(500).json({ success: false, error: "Failed to save completion." });
+  }
+});
+
+// Get all crossword entries (admin)
+app.get("/api/crossword/entries", async (req, res) => {
+  try {
+    const entries = await CrosswordEntry.find().sort({ registeredAt: -1 });
+    res.json({ success: true, entries });
+  } catch (error) {
+    console.error("Error fetching crossword entries:", error);
+    res.status(500).json({ success: false, error: "Failed to fetch entries." });
   }
 });
 
