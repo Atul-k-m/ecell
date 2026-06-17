@@ -1553,14 +1553,23 @@ const CrosswordGame = () => {
                         autoComplete="off"
                       />
                     </div>
-                    {num && (
+                    {num && arrows.length === 2 && (
                       <div className={`cw-number ${isCorrect ? 'correct' : ''}`}>
-                        {num}
+                        <span>{num}</span>
                         {arrows.map(dir => (
-                          <span key={dir} className={`cw-arrow ${dir}`}>
-                            {dir === 'down' ? '↓' : '→'}
-                          </span>
+                          <span key={dir} className="cw-arrow">{dir === 'down' ? '↓' : '→'}</span>
                         ))}
+                      </div>
+                    )}
+                    {num && arrows.length === 1 && (
+                      <div className={`cw-number ${arrows[0]} ${isCorrect ? 'correct' : ''}`}>
+                        <span>{num}</span>
+                        <span className="cw-arrow">{arrows[0] === 'down' ? '↓' : '→'}</span>
+                      </div>
+                    )}
+                    {num && arrows.length === 0 && (
+                      <div className={`cw-number ${isCorrect ? 'correct' : ''}`}>
+                        <span>{num}</span>
                       </div>
                     )}
                   </div>

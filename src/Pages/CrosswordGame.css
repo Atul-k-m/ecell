@@ -301,6 +301,7 @@
   grid-template-rows: repeat(20, 34px);
   gap: 0;
   position: relative;
+  padding: 30px; /* Make room for the badges extending outside */
 }
 
 /* ... existing cell CSS ... */
@@ -402,8 +403,6 @@
 
 .cw-number {
   position: absolute;
-  top: -12px;
-  left: -12px;
   min-width: 24px;
   height: 24px;
   padding: 0 6px;
@@ -418,8 +417,25 @@
   font-weight: bold;
   color: #12192e;
   z-index: 3;
-  transition: all 0.3s;
 }
+
+.cw-number.right {
+  top: 50%;
+  left: -24px;
+  transform: translateY(-50%);
+}
+
+.cw-number.down {
+  left: 50%;
+  top: -24px;
+  transform: translateX(-50%);
+}
+
+.cw-number:not(.right):not(.down) {
+  top: -12px;
+  left: -12px;
+}
+
 
 .cw-number.correct {
   background-color: #22c55e;
