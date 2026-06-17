@@ -112,10 +112,7 @@ function App() {
     if (
       location.pathname === "/gallery" || 
       location.pathname === "/team" || 
-      location.pathname === "/recap" ||
-      location.pathname.includes("crossword") ||
-      location.pathname.includes("leaderboard") ||
-      location.pathname.includes("/advert/admin")
+      location.pathname === "/recap"
     ) {
       setIsLightMode(false);
     } else {

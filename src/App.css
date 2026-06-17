@@ -355,3 +355,8 @@ img {
     clip-path: circle(150vmax at var(--theme-toggle-x, 100%) var(--theme-toggle-y, 100%));
   }
 }
+
+/* Crossword Double Invert for Theme Sync */
+.crossword-page {
+  filter: invert(1) hue-rotate(180deg);
+}
