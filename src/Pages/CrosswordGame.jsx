@@ -209,7 +209,7 @@ const CrosswordGame = () => {
     if (newlyCorrect.length > 0) {
       const updatedCorrect = [...correctWords, ...newlyCorrect];
       setCorrectWords(updatedCorrect);
-      checkGameCompletion(updatedCorrect);
+      checkGameCompletion(updatedCorrect, time, incorrectAttempts);
     }
 
     // Auto-advance (skip already correct "green" cells)
@@ -244,23 +244,35 @@ const CrosswordGame = () => {
     }
   };
 
-  const checkGameCompletion = async (currentCorrectList) => {
+  const checkGameCompletion = async (currentCorrectList, currentTime, currentIncorrectAttempts) => {
     if (currentCorrectList.length === wordsData.length) {
       setIsTimerRunning(false);
       setShowCompletion(true);
+      // Calculate accuracy from passed-in values (avoids stale state)
+      let totalFilled = 0;
+      const flatGrid = grid;
+      flatGrid.forEach(row => row.forEach(cell => { if (cell) totalFilled++; }));
+      const penalty = (currentIncorrectAttempts || 0) * 5;
+      const accuracy = Math.max(0, 100 - penalty);
       // Save completion stats to MongoDB
       if (entryId) {
         try {
-          await fetch('/api/crossword/complete', {
+          const res = await fetch('/api/crossword/complete', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               entryId,
-              timeTaken: time,
-              accuracy: calcAccuracy(),
+              timeTaken: currentTime,
+              accuracy,
             }),
           });
-        } catch (_) { /* silent fail */ }
+          const data = await res.json();
+          console.log('Completion saved:', data);
+        } catch (err) {
+          console.error('Failed to save completion:', err);
+        }
+      } else {
+        console.warn('No entryId — completion not saved to DB');
       }
     }
   };
