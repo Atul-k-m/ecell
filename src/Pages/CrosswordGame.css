@@ -265,13 +265,13 @@
   z-index: 1;
 }
 
-.floating-q.q1 { top: 20%; left: 8%; transform: rotate(-15deg); }
-.floating-q.q2 { top: 18%; left: 35%; transform: rotate(10deg); }
-.floating-q.q3 { top: 25%; left: 45%; transform: rotate(-5deg); }
-.floating-q.q4 { top: 40%; left: 32%; transform: rotate(15deg); }
-.floating-q.q5 { top: 38%; left: 80%; transform: rotate(-20deg); }
-.floating-q.q6 { top: 50%; left: 85%; transform: rotate(10deg); }
-.floating-q.q7 { top: 60%; left: 10%; transform: rotate(-10deg); }
+.floating-q.q1 { top: 20%; left: 5%; transform: rotate(-15deg); }
+.floating-q.q2 { top: 15%; left: 85%; transform: rotate(10deg); }
+.floating-q.q3 { top: 35%; left: 10%; transform: rotate(-5deg); }
+.floating-q.q4 { top: 45%; left: 90%; transform: rotate(15deg); }
+.floating-q.q5 { top: 65%; left: 8%; transform: rotate(-20deg); }
+.floating-q.q6 { top: 75%; left: 85%; transform: rotate(10deg); }
+.floating-q.q7 { top: 85%; left: 15%; transform: rotate(-10deg); }
 
 /* Main Content Layout */
 .main-content-layout {
@@ -865,12 +865,76 @@
 .admin-table tbody tr:last-child td { border-bottom: none; }
 .admin-table tbody tr:hover { background: #f8fafc; }
 
+/* ── Responsive Design for Mobile & Tablets ── */
+@media (max-width: 1024px) {
+  .main-content-layout {
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
+    margin-top: 20px;
+  }
+
+  .clues-section {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .clue-column {
+    padding: 20px;
+  }
+
+  .clue-column:first-child {
+    border-right: none;
+    border-bottom: 2px solid rgba(18, 25, 46, 0.1);
+  }
+
+  .floating-q {
+    display: none; /* Hide floating decors on smaller screens to prevent overflow issues */
+  }
+}
+
 @media (max-width: 600px) {
+  .crossword-header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .title-section h1 { font-size: 3rem; }
+  .title-section .subtitle { font-size: 1.5rem; margin-left: 0; margin-top: -10px; }
+
+  .header-right {
+    align-items: center;
+  }
+
+  .timer-display {
+    font-size: 2rem;
+  }
+
   .crossword-board-container {
+    width: 100%;
     overflow-x: auto;
     justify-content: flex-start;
-    padding-left: 20px;
+    padding-bottom: 10px; /* Space for scrollbar */
   }
-  .title-section h1 { font-size: 3.5rem; }
-  .title-section .subtitle { font-size: 2rem; }
+
+  .crossword-board {
+    grid-template-columns: repeat(14, 30px);
+    grid-template-rows: repeat(8, 30px);
+  }
+
+  .cw-cell input {
+    font-size: 1.2rem; /* Keep >= 16px to prevent iOS auto-zoom if possible, though 1.2rem on html might be 19px */
+  }
+
+  .clues-section {
+    width: 100%;
+  }
+
+  .clue-list li {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
 }

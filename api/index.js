@@ -138,4 +138,18 @@ app.get("/api/crossword/entries", async (req, res) => {
   }
 });
 
+// GET /api/crossword/leaderboard  (public leaderboard - completed teams sorted by time)
+app.get("/api/crossword/leaderboard", async (req, res) => {
+  try {
+    await connectDB();
+    const entries = await CrosswordEntry.find(
+      { completedAt: { $ne: null }, timeTaken: { $ne: null }, teamName: { $not: /^team nucleus$/i } },
+      { teamName: 1, timeTaken: 1, completedAt: 1 }  // only return needed fields
+    ).sort({ timeTaken: 1 }); // ascending = fastest first
+    res.json({ success: true, entries });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 export default app;

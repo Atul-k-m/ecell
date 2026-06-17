@@ -393,14 +393,7 @@ const CrosswordGame = () => {
 
   return (
     <div className="crossword-page">
-      {/* Background decor */}
-      <div className="floating-q q1">?</div>
-      <div className="floating-q q2">?</div>
-      <div className="floating-q q3">?</div>
-      <div className="floating-q q4">?</div>
-      <div className="floating-q q5">?</div>
-      <div className="floating-q q6">?</div>
-      <div className="floating-q q7">?</div>
+      {/* Background decor removed */}
 
       {!loggedIn ? (
         <div className="login-overlay">
@@ -456,13 +449,6 @@ const CrosswordGame = () => {
         </div>
       ) : (
         <>
-      <div className="floating-q q2">?</div>
-      <div className="floating-q q3">?</div>
-      <div className="floating-q q4">?</div>
-      <div className="floating-q q5">?</div>
-      <div className="floating-q q6">?</div>
-      <div className="floating-q q7">?</div>
-
       <header className="crossword-header">
         <div className="title-section">
           <h1>Welcome to</h1>

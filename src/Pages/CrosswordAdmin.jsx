@@ -13,6 +13,7 @@ export default function CrosswordAdmin() {
   const [actionLoading, setActionLoading] = useState(false);
   const [entries, setEntries] = useState([]);
   const [entriesLoading, setEntriesLoading] = useState(false);
+  const [lastRefreshed, setLastRefreshed] = useState(null);
 
   const handleAuth = (e) => {
     e.preventDefault();
@@ -23,18 +24,27 @@ export default function CrosswordAdmin() {
     }
   };
 
+  const fetchEntries = () => {
+    setEntriesLoading(true);
+    fetch('/api/crossword/entries')
+      .then(r => r.json())
+      .then(data => { if (data.success) setEntries(data.entries); })
+      .finally(() => { setEntriesLoading(false); setLastRefreshed(new Date()); });
+  };
+
   useEffect(() => {
     if (!authenticated) return;
+
     fetch('/api/crossword/status')
       .then(r => r.json())
       .then(data => { if (data.success) setIsStarted(data.isStarted); })
       .finally(() => setLoading(false));
 
-    setEntriesLoading(true);
-    fetch('/api/crossword/entries')
-      .then(r => r.json())
-      .then(data => { if (data.success) setEntries(data.entries); })
-      .finally(() => setEntriesLoading(false));
+    fetchEntries();
+
+    // Auto-refresh entries every 10 seconds
+    const interval = setInterval(fetchEntries, 10000);
+    return () => clearInterval(interval);
   }, [authenticated]);
 
   const handleToggle = async (action) => {
@@ -65,11 +75,6 @@ export default function CrosswordAdmin() {
   if (!authenticated) {
     return (
       <div className="crossword-page">
-        <div className="floating-q q1">?</div>
-        <div className="floating-q q2">?</div>
-        <div className="floating-q q3">?</div>
-        <div className="floating-q q5">?</div>
-        <div className="floating-q q7">?</div>
         <div className="login-overlay">
           <div className="login-modal">
             <div className="login-brand">
@@ -102,9 +107,6 @@ export default function CrosswordAdmin() {
   // ── Admin Dashboard ──
   return (
     <div className="crossword-page">
-      <div className="floating-q q1">?</div>
-      <div className="floating-q q5">?</div>
-      <div className="floating-q q7">?</div>
 
       <header className="crossword-header">
         <div className="title-section">
@@ -153,7 +155,19 @@ export default function CrosswordAdmin() {
 
       {/* Entries Table */}
       <div style={{ padding: '40px 50px' }}>
-        <h3 className="admin-section-title">Registered Teams ({entries.length})</h3>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+          <h3 className="admin-section-title" style={{ margin: 0 }}>Registered Teams ({entries.length})</h3>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            {lastRefreshed && <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Last updated: {lastRefreshed.toLocaleTimeString()}</span>}
+            <button
+              onClick={fetchEntries}
+              disabled={entriesLoading}
+              style={{ padding: '8px 16px', background: '#12192e', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', boxShadow: '3px 3px 0px #c9df4a', opacity: entriesLoading ? 0.6 : 1 }}
+            >
+              {entriesLoading ? 'Refreshing…' : '↻ Refresh'}
+            </button>
+          </div>
+        </div>
         {entriesLoading ? (
           <p>Loading entries…</p>
         ) : entries.length === 0 ? (

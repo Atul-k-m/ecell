@@ -732,6 +732,20 @@ app.get("/api/crossword/entries", async (req, res) => {
   }
 });
 
+// Public leaderboard — completed teams sorted by time ascending
+app.get("/api/crossword/leaderboard", async (req, res) => {
+  try {
+    const entries = await CrosswordEntry.find(
+      { completedAt: { $ne: null }, timeTaken: { $ne: null }, teamName: { $not: /^team nucleus$/i } },
+      { teamName: 1, timeTaken: 1, completedAt: 1 }
+    ).sort({ timeTaken: 1 });
+    res.json({ success: true, entries });
+  } catch (error) {
+    console.error("Error fetching leaderboard:", error);
+    res.status(500).json({ success: false, error: "Failed to fetch leaderboard." });
+  }
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error("Unhandled error:", err);
