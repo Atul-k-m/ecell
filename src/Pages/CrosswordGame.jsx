@@ -929,53 +929,17 @@ const answerKey = [
 
 const wordsData = [
   {
-    "id": "h1",
+    "id": "v12",
     "num": 1,
-    "dir": "horizontal",
-    "text": "Before Zoom, I was the king of frozen faces and awkward calls. Who am I?",
-    "word": "SKYPE",
-    "r": 11,
-    "c": 6
-  },
-  {
-    "id": "v2",
-    "num": 2,
     "dir": "vertical",
-    "text": "I used to send DVDs to people's homes. Now I send cliffhangers directly to your brain. Who am I?",
-    "word": "NETFLIX",
-    "r": 10,
-    "c": 10
-  },
-  {
-    "id": "h3",
-    "num": 3,
-    "dir": "horizontal",
-    "text": "An old-fashioned word for a message and a modern place for endless group chats. Who am I?",
-    "word": "TELEGRAM",
-    "r": 12,
-    "c": 10
-  },
-  {
-    "id": "v4",
-    "num": 4,
-    "dir": "vertical",
-    "text": "I know exactly how to spell your name. I just choose not to. Who am I?",
-    "word": "STARBUCKS",
-    "r": 11,
-    "c": 6
-  },
-  {
-    "id": "h5",
-    "num": 5,
-    "dir": "horizontal",
-    "text": "I let you try on glasses without stepping outside. If they make you look questionable, send them back. Who am I?",
-    "word": "LENSKART",
-    "r": 14,
-    "c": 10
+    "text": "Need a plumber, electrician, beautician, or furniture assembly expert? I somehow know all of them. Who am I?",
+    "word": "URBANCOMPANY",
+    "r": 0,
+    "c": 8
   },
   {
     "id": "v6",
-    "num": 6,
+    "num": 2,
     "dir": "vertical",
     "text": "Started in a garage and now answers questions nobody in your group chat can. Who am I?",
     "word": "GOOGLE",
@@ -984,7 +948,7 @@ const wordsData = [
   },
   {
     "id": "v7",
-    "num": 7,
+    "num": 3,
     "dir": "vertical",
     "text": "I'm famous for making cars that barely make noise. Who am I?",
     "word": "TESLA",
@@ -992,35 +956,8 @@ const wordsData = [
     "c": 16
   },
   {
-    "id": "v8",
-    "num": 8,
-    "dir": "vertical",
-    "text": "I sold books online before deciding to sell basically the entire planet. Who am I?",
-    "word": "AMAZON",
-    "r": 14,
-    "c": 15
-  },
-  {
-    "id": "h9",
-    "num": 9,
-    "dir": "horizontal",
-    "text": "A gym membership that follows you everywhere. Who am I?",
-    "word": "CULTFIT",
-    "r": 12,
-    "c": 0
-  },
-  {
-    "id": "h10",
-    "num": 10,
-    "dir": "horizontal",
-    "text": "I sell furniture and confidence in your ability to follow diagrams. Who am I?",
-    "word": "IKEA",
-    "r": 18,
-    "c": 5
-  },
-  {
     "id": "h11",
-    "num": 11,
+    "num": 4,
     "dir": "horizontal",
     "text": "The front page of the internet and the comment section of chaos. Who am I?",
     "word": "REDDIT",
@@ -1028,26 +965,80 @@ const wordsData = [
     "c": 15
   },
   {
-    "id": "v12",
-    "num": 12,
+    "id": "v2",
+    "num": 5,
     "dir": "vertical",
-    "text": "Need a plumber, electrician, beautician, or furniture assembly expert? I somehow know all of them. Who am I?",
-    "word": "URBANCOMPANY",
-    "r": 0,
-    "c": 8
+    "text": "I used to send DVDs to people's homes. Now I send cliffhangers directly to your brain. Who am I?",
+    "word": "NETFLIX",
+    "r": 10,
+    "c": 10
   },
   {
-    "id": "h13",
-    "num": 13,
+    "id": "h1",
+    "num": 6,
     "dir": "horizontal",
-    "text": "I have an extra letter in my name and hopefully extra money in your future. Who am I?",
-    "word": "GROWW",
-    "r": 18,
-    "c": 13
+    "text": "Before Zoom, I was the king of frozen faces and awkward calls. Who am I?",
+    "word": "SKYPE",
+    "r": 11,
+    "c": 6
+  },
+  {
+    "id": "v4",
+    "num": 6,
+    "dir": "vertical",
+    "text": "I know exactly how to spell your name. I just choose not to. Who am I?",
+    "word": "STARBUCKS",
+    "r": 11,
+    "c": 6
+  },
+  {
+    "id": "h9",
+    "num": 7,
+    "dir": "horizontal",
+    "text": "A gym membership that follows you everywhere. Who am I?",
+    "word": "CULTFIT",
+    "r": 12,
+    "c": 0
+  },
+  {
+    "id": "h3",
+    "num": 8,
+    "dir": "horizontal",
+    "text": "An old-fashioned word for a message and a modern place for endless group chats. Who am I?",
+    "word": "TELEGRAM",
+    "r": 12,
+    "c": 10
+  },
+  {
+    "id": "h5",
+    "num": 9,
+    "dir": "horizontal",
+    "text": "I let you try on glasses without stepping outside. If they make you look questionable, send them back. Who am I?",
+    "word": "LENSKART",
+    "r": 14,
+    "c": 10
+  },
+  {
+    "id": "v8",
+    "num": 10,
+    "dir": "vertical",
+    "text": "I sold books online before deciding to sell basically the entire planet. Who am I?",
+    "word": "AMAZON",
+    "r": 14,
+    "c": 15
+  },
+  {
+    "id": "h15",
+    "num": 11,
+    "dir": "horizontal",
+    "text": "Turned spare bedrooms into a billion-dollar business. Who am I?",
+    "word": "AIRBNB",
+    "r": 15,
+    "c": 3
   },
   {
     "id": "h14",
-    "num": 14,
+    "num": 12,
     "dir": "horizontal",
     "text": "I was once a bird. Now I'm a letter. Who am I?",
     "word": "X",
@@ -1055,13 +1046,22 @@ const wordsData = [
     "c": 10
   },
   {
-    "id": "h15",
-    "num": 15,
+    "id": "h10",
+    "num": 13,
     "dir": "horizontal",
-    "text": "Turned spare bedrooms into a billion-dollar business. Who am I?",
-    "word": "AIRBNB",
-    "r": 15,
-    "c": 3
+    "text": "I sell furniture and confidence in your ability to follow diagrams. Who am I?",
+    "word": "IKEA",
+    "r": 18,
+    "c": 5
+  },
+  {
+    "id": "h13",
+    "num": 14,
+    "dir": "horizontal",
+    "text": "I have an extra letter in my name and hopefully extra money in your future. Who am I?",
+    "word": "GROWW",
+    "r": 18,
+    "c": 13
   }
 ];
 
