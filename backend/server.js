@@ -47,9 +47,10 @@ const ensureDemoAdminTeam = async () => {
 app.use(helmet());
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || [
+    origin: [
       "http://localhost:5173",
       "http://localhost:3000",
+      "https://ecell-bmsitm.vercel.app"
     ],
     credentials: true,
   }),
@@ -739,13 +740,15 @@ app.use((req, res) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Failure Story Backend running on port ${PORT}`);
-  console.log(
-    `📧 Email service: ${process.env.SMTP_HOST ? "Custom SMTP" : "Gmail"}`,
-  );
-  console.log(`🌐 Environment: ${process.env.NODE_ENV || "development"}`);
-});
+// Start server only if run directly (not imported as a serverless function)
+if (process.env.NODE_ENV !== 'production' && require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Failure Story Backend running on port ${PORT}`);
+    console.log(
+      `📧 Email service: ${process.env.SMTP_HOST ? "Custom SMTP" : "Gmail"}`,
+    );
+    console.log(`🌐 Environment: ${process.env.NODE_ENV || "development"}`);
+  });
+}
 
 module.exports = app;

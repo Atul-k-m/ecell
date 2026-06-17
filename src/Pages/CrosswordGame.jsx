@@ -62,7 +62,7 @@ const CrosswordGame = () => {
       return;
     }
     try {
-      const res = await fetch('http://localhost:3001/api/crossword/register', {
+      const res = await fetch('/api/crossword/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ teamName: teamName.trim(), phone: phoneNumber }),
@@ -105,7 +105,7 @@ const CrosswordGame = () => {
     // Poll every 3 seconds until admin starts the game
     const poll = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/crossword/status');
+        const res = await fetch('/api/crossword/status');
         const data = await res.json();
         if (data.success && data.isStarted) {
           setGameStarted(true);
@@ -251,7 +251,7 @@ const CrosswordGame = () => {
       // Save completion stats to MongoDB
       if (entryId) {
         try {
-          await fetch('http://localhost:3001/api/crossword/complete', {
+          await fetch('/api/crossword/complete', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

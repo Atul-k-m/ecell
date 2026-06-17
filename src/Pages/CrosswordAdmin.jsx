@@ -25,13 +25,13 @@ export default function CrosswordAdmin() {
 
   useEffect(() => {
     if (!authenticated) return;
-    fetch('http://localhost:3001/api/crossword/status')
+    fetch('/api/crossword/status')
       .then(r => r.json())
       .then(data => { if (data.success) setIsStarted(data.isStarted); })
       .finally(() => setLoading(false));
 
     setEntriesLoading(true);
-    fetch('http://localhost:3001/api/crossword/entries')
+    fetch('/api/crossword/entries')
       .then(r => r.json())
       .then(data => { if (data.success) setEntries(data.entries); })
       .finally(() => setEntriesLoading(false));
@@ -40,7 +40,7 @@ export default function CrosswordAdmin() {
   const handleToggle = async (action) => {
     setActionLoading(true);
     try {
-      const res = await fetch('http://localhost:3001/api/crossword/status', {
+      const res = await fetch('/api/crossword/status', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action }),
