@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Dither from '../components/Dither';
 import './AdvertTimer.css';
 
-export default function AdvertTimer() {
-  const [totalTime, setTotalTime] = useState(5 * 60);
+export default function AdvertTimerV2() {
+  const [totalTime, setTotalTime] = useState(5 * 60); // Default 5 mins
+  const [timeLeft, setTimeLeft] = useState(5 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [customMinutes, setCustomMinutes] = useState("");
   const [showCustomInput, setShowCustomInput] = useState(false);
@@ -12,21 +14,26 @@ export default function AdvertTimer() {
   const totalTimeMsRef = React.useRef(5 * 60 * 1000);
   const timeLeftMsRef = React.useRef(5 * 60 * 1000);
 
+  // We keep a separate state for the UI updates so the arc can be ultra smooth
   const [smoothProgress, setSmoothProgress] = useState(1);
   const [displaySeconds, setDisplaySeconds] = useState(5 * 60);
 
   const updateTimer = (timestamp) => {
     if (!startTimeRef.current) startTimeRef.current = timestamp;
     const elapsed = timestamp - startTimeRef.current;
+    
     let newTimeLeftMs = timeLeftMsRef.current - elapsed;
     if (newTimeLeftMs <= 0) {
       newTimeLeftMs = 0;
       setIsRunning(false);
     }
+
     const currentTotalMs = totalTimeMsRef.current;
     const currentProgress = currentTotalMs > 0 ? (newTimeLeftMs / currentTotalMs) : 0;
+    
     setSmoothProgress(currentProgress);
     setDisplaySeconds(Math.ceil(newTimeLeftMs / 1000));
+
     if (newTimeLeftMs > 0) {
       startTimeRef.current = timestamp;
       timeLeftMsRef.current = newTimeLeftMs;
@@ -74,30 +81,15 @@ export default function AdvertTimer() {
 
   const progress = smoothProgress;
 
-  // Theme configuration based on 1/3rds — Green → Yellow → Red
-  let themeColor = "#22c55e";
-  let glowColor = "rgba(34, 197, 94, 0.08)";
-  let auroraColor = "rgba(34, 197, 94, 0.45)";
-  let btnGlowColor = "rgba(34, 197, 94, 0.25)";
-  let btnGlowHover = "rgba(34, 197, 94, 0.4)";
-  let topGradient = "linear-gradient(90deg, #14532d, #22c55e, #14532d)";
+  // Theme configuration: Solid white monochrome look
+  const themeColor = "#ffffff";
+  const glowColor = "rgba(255, 255, 255, 0.15)";
+  const auroraColor = "rgba(255, 255, 255, 0.2)";
+  const btnGlowColor = "rgba(255, 255, 255, 0.15)";
+  const btnGlowHover = "rgba(255, 255, 255, 0.3)";
+  const topGradient = "none";
 
-  if (progress <= 0.333) {
-    themeColor = "#ff2a00";
-    glowColor = "rgba(255, 42, 0, 0.1)";
-    auroraColor = "rgba(255, 42, 0, 0.45)";
-    btnGlowColor = "rgba(255, 42, 0, 0.25)";
-    btnGlowHover = "rgba(255, 42, 0, 0.4)";
-    topGradient = "linear-gradient(90deg, #7f1d1d, #ff2a00, #7f1d1d)";
-  } else if (progress <= 0.666) {
-    themeColor = "#eab308";
-    glowColor = "rgba(234, 179, 8, 0.08)";
-    auroraColor = "rgba(234, 179, 8, 0.45)";
-    btnGlowColor = "rgba(234, 179, 8, 0.25)";
-    btnGlowHover = "rgba(234, 179, 8, 0.4)";
-    topGradient = "linear-gradient(90deg, #713f12, #eab308, #713f12)";
-  }
-
+  // SVG calculations
   const cx = 500;
   const cy = 612.5;
   const radius = 512.5;
@@ -105,15 +97,19 @@ export default function AdvertTimer() {
   const ARC_LENGTH = 1383.2;
   const TOTAL_CIRCUMFERENCE = 3220.1;
 
+  // Calculate moving indicator coordinates along the arc
   const currentAngleDeg = 192.6804 + (progress * 154.6392);
   const currentAngleRad = currentAngleDeg * (Math.PI / 180);
+  
   const innerNeedleR = radius - strokeWidth / 2 - 10;
   const outerNeedleR = radius + strokeWidth / 2 + 10;
+
   const needleX1 = cx + innerNeedleR * Math.cos(currentAngleRad);
   const needleY1 = cy + innerNeedleR * Math.sin(currentAngleRad);
   const needleX2 = cx + outerNeedleR * Math.cos(currentAngleRad);
   const needleY2 = cy + outerNeedleR * Math.sin(currentAngleRad);
 
+  // Generate ticks
   const ticks = [];
   const numTicks = 120;
   for (let i = 0; i < numTicks; i++) {
@@ -121,18 +117,21 @@ export default function AdvertTimer() {
     const rad = angleDeg * (Math.PI / 180);
     const tickStartR = radius + strokeWidth / 2 + 8;
     const tickEndR = radius + strokeWidth / 2 + 16;
+
     const x1 = cx + tickStartR * Math.cos(rad);
     const y1 = cy + tickStartR * Math.sin(rad);
     const x2 = cx + tickEndR * Math.cos(rad);
     const y2 = cy + tickEndR * Math.sin(rad);
+
     const progressAngle = 192.6804 + progress * 154.6392;
     const isActive = angleDeg <= progressAngle;
+
     ticks.push({ x1, y1, x2, y2, isActive });
   }
 
   return (
-    <div
-      className="advert-timer-page"
+    <div 
+      className="advert-timer-page" 
       style={{
         "--theme-color": themeColor,
         "--glow-color": glowColor,
@@ -142,84 +141,144 @@ export default function AdvertTimer() {
         "--top-gradient": topGradient
       }}
     >
-      {/* Animated Aurora Spotlights */}
-      <div className="aurora-container">
-        <div className="aurora-beam aurora-beam-1"></div>
-        <div className="aurora-beam aurora-beam-2"></div>
-        <div className="aurora-beam aurora-beam-3"></div>
-        <div className="aurora-beam aurora-beam-4"></div>
-        <div className="aurora-beam aurora-beam-5"></div>
-        <div className="aurora-beam aurora-beam-6"></div>
+      {/* Retro Dither Background */}
+      <div className="dither-bg">
+        <Dither
+          waveColor={[0.4, 0.4, 0.4]}
+          disableAnimation={false}
+          enableMouseInteraction={true}
+          mouseRadius={0.3}
+          colorNum={4}
+          waveAmplitude={0.3}
+          waveFrequency={3}
+          waveSpeed={0.05}
+        />
       </div>
       <div className="grid-overlay"></div>
 
+      {/* Top Nav-Style Pill Container */}
       <div className="nav-pill">
         <div className="nav-brand">
           <span className="brand-dot"></span>
           ADVERT 3.0
         </div>
+        
         <div className="nav-items">
-          <button className={`nav-item ${totalTime === 2 * 60 ? 'active' : ''}`} onClick={() => resetTimer(2)}>2 Min</button>
-          <button className={`nav-item ${totalTime === 3 * 60 ? 'active' : ''}`} onClick={() => resetTimer(3)}>3 Min</button>
-          <button className={`nav-item ${totalTime === 5 * 60 ? 'active' : ''}`} onClick={() => resetTimer(5)}>5 Min</button>
+          <button 
+            className={`nav-item ${totalTime === 2 * 60 ? 'active' : ''}`}
+            onClick={() => resetTimer(2)}
+          >
+            2 Min
+          </button>
+          <button 
+            className={`nav-item ${totalTime === 3 * 60 ? 'active' : ''}`}
+            onClick={() => resetTimer(3)}
+          >
+            3 Min
+          </button>
+          <button 
+            className={`nav-item ${totalTime === 5 * 60 ? 'active' : ''}`}
+            onClick={() => resetTimer(5)}
+          >
+            5 Min
+          </button>
+          
           {showCustomInput ? (
             <form onSubmit={handleCustomSet} className="nav-custom-form">
-              <input
+              <input 
                 type="number"
                 value={customMinutes}
                 onChange={(e) => setCustomMinutes(e.target.value)}
                 className="nav-custom-input"
                 autoFocus
-                onBlur={() => { if (customMinutes === "") setShowCustomInput(false); }}
+                onBlur={() => {
+                  if (customMinutes === "") setShowCustomInput(false);
+                }}
                 placeholder="MINS"
                 min="1"
               />
             </form>
           ) : (
-            <button className="nav-item" onClick={() => setShowCustomInput(true)}>Custom</button>
+            <button 
+              className="nav-item"
+              onClick={() => setShowCustomInput(true)}
+            >
+              Custom
+            </button>
           )}
         </div>
+
         <button className="nav-action" onClick={toggleTimer}>
           {isRunning ? 'Pause' : 'Start Timer'}
         </button>
       </div>
 
-      <div className="content-container"></div>
+      <div className="content-container">
+        
+      </div>
 
       <div className="timer-container">
         <svg viewBox="0 0 1000 500" className="timer-svg">
           <defs>
-            <filter id="arc-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <filter id="arc-glow-v2" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="6" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
-            <filter id="needle-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <filter id="needle-glow-v2" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="3" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
-          <path d="M 0 500 A 512.5 512.5 0 0 1 1000 500" fill="none" stroke="#141414" strokeWidth={strokeWidth} />
-          <path
+          
+          {/* Background track (empty part of arc) */}
+          <path 
             d="M 0 500 A 512.5 512.5 0 0 1 1000 500"
-            fill="none"
-            stroke="var(--theme-color)"
+            fill="none" 
+            stroke="#141414" 
+            strokeWidth={strokeWidth}
+          />
+
+          {/* Filled glowing progress arc */}
+          <path 
+            d="M 0 500 A 512.5 512.5 0 0 1 1000 500"
+            fill="none" 
+            stroke="var(--theme-color)" 
             strokeWidth={strokeWidth}
             strokeDasharray={`${ARC_LENGTH * progress} ${TOTAL_CIRCUMFERENCE}`}
-            filter="url(#arc-glow)"
+            filter="url(#arc-glow-v2)"
           />
-          <line x1={needleX1} y1={needleY1} x2={needleX2} y2={needleY2} stroke="var(--theme-color)" strokeWidth="3.5" filter="url(#needle-glow)" />
+
+          {/* Dynamic moving needle marker */}
+          <line 
+            x1={needleX1} 
+            y1={needleY1} 
+            x2={needleX2} 
+            y2={needleY2} 
+            stroke="var(--theme-color)" 
+            strokeWidth="3.5"
+            filter="url(#needle-glow-v2)"
+          />
+
+          {/* Ticks along the outer edge */}
           {ticks.map((tick, i) => (
-            <line
+            <line 
               key={i}
-              x1={tick.x1} y1={tick.y1} x2={tick.x2} y2={tick.y2}
-              stroke={tick.isActive ? "rgba(255, 255, 255, 0.35)" : "#222222"}
+              x1={tick.x1} 
+              y1={tick.y1} 
+              x2={tick.x2} 
+              y2={tick.y2}
+              stroke={tick.isActive ? "rgba(255, 255, 255, 0.35)" : "#222222"} 
               strokeWidth="1.5"
               style={{ transition: 'stroke 0.5s ease' }}
             />
           ))}
         </svg>
+
+        {/* Floating time display centered in the arc */}
         <div className="time-display">
-          <div className="time-value">{formatTime(displaySeconds)}</div>
+          <div className="time-value">
+            {formatTime(displaySeconds)}
+          </div>
           <h2 className="timer-main-label">ADVERT 3.0</h2>
         </div>
       </div>

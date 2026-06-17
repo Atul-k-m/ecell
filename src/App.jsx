@@ -76,6 +76,7 @@ const CrosswordGame = lazy(() => import("./Pages/CrosswordGame.jsx"));
 const CrosswordAdmin = lazy(() => import("./Pages/CrosswordAdmin.jsx"));
 const CrosswordLeaderboard = lazy(() => import("./Pages/CrosswordLeaderboard.jsx"));
 const AdvertTimer = lazy(() => import("./Pages/AdvertTimer.jsx"));
+const AdvertTimerV2 = lazy(() => import("./Pages/AdvertTimerV2.jsx"));
 const NotFound = lazy(() => import("./Pages/NotFound.jsx"));
 
 export const PreloaderContext = createContext();
@@ -242,6 +243,7 @@ function App() {
                     <Route path="/advert/game/leaderboard" element={<CrosswordLeaderboard />} />
                     <Route path="/advert/admin" element={<CrosswordAdmin />} />
                     <Route path="/event/timer" element={<AdvertTimer />} />
+                    <Route path="/event/timer2" element={<AdvertTimerV2 />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </Suspense>
