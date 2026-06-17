@@ -278,9 +278,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 40px;
   padding: 0 50px;
-  margin-top: 40px;
+  margin-top: 10px;
   position: relative;
   z-index: 2;
   max-width: 1400px;
@@ -297,8 +297,8 @@
 
 .crossword-board {
   display: grid;
-  grid-template-columns: repeat(14, 40px);
-  grid-template-rows: repeat(8, 40px);
+  grid-template-columns: repeat(21, 34px);
+  grid-template-rows: repeat(20, 34px);
   gap: 0;
   position: relative;
 }
@@ -313,7 +313,7 @@
   border: 2px solid #12192e;
   border-radius: 12px;
   box-shadow: 4px 4px 0px rgba(18, 25, 46, 0.1);
-  width: 600px;
+  width: 500px;
   flex-shrink: 0;
 }
 
@@ -383,7 +383,7 @@
   border: none;
   background: transparent;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   color: #12192e;
@@ -921,8 +921,8 @@
   }
 
   .crossword-board {
-    grid-template-columns: repeat(14, 30px);
-    grid-template-rows: repeat(8, 30px);
+    grid-template-columns: repeat(21, 30px);
+    grid-template-rows: repeat(20, 30px);
   }
 
   .cw-cell input {
