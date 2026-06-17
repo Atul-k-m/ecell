@@ -104,6 +104,20 @@ export default function CrosswordAdmin() {
     );
   }
 
+  // Sort entries for Admin Dashboard
+  const sortedEntries = [...entries].sort((a, b) => {
+    // 1. Completed teams first
+    const aCompleted = a.completedAt ? 1 : 0;
+    const bCompleted = b.completedAt ? 1 : 0;
+    if (aCompleted !== bCompleted) return bCompleted - aCompleted;
+
+    // 2. If both completed, sort by Time (asc)
+    if (aCompleted && bCompleted) {
+      return a.timeTaken - b.timeTaken;
+    }
+    return 0; // Keep original order for uncompleted
+  });
+
   // ── Admin Dashboard ──
   return (
     <div className="crossword-page">
@@ -158,7 +172,7 @@ export default function CrosswordAdmin() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
           <h3 className="admin-section-title" style={{ margin: 0 }}>Registered Teams ({entries.length})</h3>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            {lastRefreshed && <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Last updated: {lastRefreshed.toLocaleTimeString()}</span>}
+            {lastRefreshed && <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Last updated: {lastRefreshed.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'short', timeStyle: 'short' })}</span>}
             <button
               onClick={fetchEntries}
               disabled={entriesLoading}
@@ -187,12 +201,12 @@ export default function CrosswordAdmin() {
                 </tr>
               </thead>
               <tbody>
-                {entries.map((e, i) => (
+                {sortedEntries.map((e, i) => (
                   <tr key={e._id}>
                     <td>{i + 1}</td>
                     <td><strong>{e.teamName}</strong></td>
                     <td>+91 {e.phone}</td>
-                    <td>{new Date(e.registeredAt).toLocaleTimeString()}</td>
+                    <td>{new Date(e.registeredAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'short', timeStyle: 'short' })}</td>
                     <td>{e.completedAt ? '✅' : '—'}</td>
                     <td>{formatTime(e.timeTaken)}</td>
                     <td>{e.accuracy != null ? `${e.accuracy}%` : '—'}</td>

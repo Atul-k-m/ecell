@@ -94,7 +94,7 @@ app.post("/api/crossword/register", async (req, res) => {
     if (trimmedName.toLowerCase() === "team nucleus") {
       entry = await CrosswordEntry.findOneAndUpdate(
         { teamName: trimmedName },
-        { phone, completedAt: null, timeTaken: null, accuracy: null },
+        { phone, completedAt: null, timeTaken: null, accuracy: null, registeredAt: Date.now() },
         { new: true, upsert: true }
       );
     } else {

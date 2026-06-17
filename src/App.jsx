@@ -109,7 +109,14 @@ function App() {
   const isSpl3 = location.pathname === "/events/spl3" || location.pathname === "/spl3";
 
   useEffect(() => {
-    if (location.pathname === "/gallery" || location.pathname === "/team" || location.pathname === "/recap") {
+    if (
+      location.pathname === "/gallery" || 
+      location.pathname === "/team" || 
+      location.pathname === "/recap" ||
+      location.pathname.includes("crossword") ||
+      location.pathname.includes("leaderboard") ||
+      location.pathname.includes("/advert/admin")
+    ) {
       setIsLightMode(false);
     } else {
       setIsLightMode(true);

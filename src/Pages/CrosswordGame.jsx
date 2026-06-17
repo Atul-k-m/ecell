@@ -181,7 +181,23 @@ const CrosswordGame = () => {
     return isCorrect;
   };
 
+  const isCellInWord = (r, c, wordId) => {
+    const w = wordsData.find(x => x.id === wordId);
+    if (!w) return false;
+    if (w.dir === 'horizontal') {
+      return r === w.r && c >= w.c && c < w.c + w.word.length;
+    } else {
+      return c === w.c && r >= w.r && r < w.r + w.word.length;
+    }
+  };
+
+  const isCellCorrect = (r, c) => {
+    // If it belongs to ANY correctly fully solved word, it's correct
+    return correctWords.some(wId => isCellInWord(r, c, wId));
+  };
+
   const handleInputChange = (e, r, c) => {
+    if (isCellCorrect(r, c)) return;
     let val = e.target.value.toUpperCase();
     if (val.length > 1) val = val.slice(-1);
     
@@ -319,13 +335,16 @@ const CrosswordGame = () => {
       if (r > 0 && gridStructure[r-1] && gridStructure[r-1][c] === 1) nextR = r - 1;
     } else if (e.key === 'Backspace') {
       e.preventDefault();
-      const newGrid = [...grid];
-      newGrid[r][c] = '';
-      setGrid(newGrid);
       
-      const cellIdStr = `${r}-${c}`;
-      if (wrongCells.includes(cellIdStr)) {
-        setWrongCells(prev => prev.filter(id => id !== cellIdStr));
+      if (!isCellCorrect(r, c)) {
+        const newGrid = [...grid];
+        newGrid[r][c] = '';
+        setGrid(newGrid);
+        
+        const cellIdStr = `${r}-${c}`;
+        if (wrongCells.includes(cellIdStr)) {
+          setWrongCells(prev => prev.filter(id => id !== cellIdStr));
+        }
       }
 
       if (direction === 'right') {
@@ -372,20 +391,7 @@ const CrosswordGame = () => {
     return arrows;
   }
 
-  const isCellInWord = (r, c, wordId) => {
-    const w = wordsData.find(x => x.id === wordId);
-    if (!w) return false;
-    if (w.dir === 'horizontal') {
-      return r === w.r && c >= w.c && c < w.c + w.word.length;
-    } else {
-      return c === w.c && r >= w.r && r < w.r + w.word.length;
-    }
-  };
 
-  const isCellCorrect = (r, c) => {
-    // If it belongs to ANY correctly fully solved word, it's correct
-    return correctWords.some(wId => isCellInWord(r, c, wId));
-  };
 
   const isCellActive = (r, c) => {
     return activeWordId && isCellInWord(r, c, activeWordId);

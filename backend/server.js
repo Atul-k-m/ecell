@@ -671,7 +671,7 @@ app.post("/api/crossword/register", async (req, res) => {
       // Demo admin team: reset their stats and allow them to play again
       entry = await CrosswordEntry.findOneAndUpdate(
         { teamName: trimmedName },
-        { phone, completedAt: null, timeTaken: null, accuracy: null },
+        { phone, completedAt: null, timeTaken: null, accuracy: null, registeredAt: Date.now() },
         { new: true, upsert: true }
       );
     } else {
