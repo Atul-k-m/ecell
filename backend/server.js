@@ -686,7 +686,12 @@ app.post("/api/crossword/register", async (req, res) => {
     res.status(201).json({ success: true, entryId: entry._id });
   } catch (error) {
     console.error("Error registering crossword team:", error);
-    res.status(500).json({ success: false, error: "Failed to register team." });
+    res.status(500).json({ 
+      success: false, 
+      error: "Failed to register team.",
+      details: error.message,
+      stack: error.stack 
+    });
   }
 });
 
