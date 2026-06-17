@@ -59,14 +59,18 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 // MongoDB connection
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(async () => {
-    console.log("✅ Connected to MongoDB");
-    await ensureDemoAdminTeam();
-    console.log(`🧪 Demo admin ready: ${GAME_DEMO_ADMIN_ID}`);
-  })
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+if (!process.env.MONGODB_URI) {
+  console.error("❌ MONGODB_URI environment variable is missing!");
+} else {
+  mongoose
+    .connect(process.env.MONGODB_URI)
+    .then(async () => {
+      console.log("✅ Connected to MongoDB");
+      await ensureDemoAdminTeam();
+      console.log(`🧪 Demo admin ready: ${GAME_DEMO_ADMIN_ID}`);
+    })
+    .catch((err) => console.error("❌ MongoDB connection error:", err));
+}
 
 // Rate limiting - 5 submissions per hour per IP
 const submissionLimiter = rateLimit({
