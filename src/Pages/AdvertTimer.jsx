@@ -166,6 +166,8 @@ export default function AdvertTimer() {
         <div className="aurora-beam aurora-beam-2"></div>
         <div className="aurora-beam aurora-beam-3"></div>
         <div className="aurora-beam aurora-beam-4"></div>
+        <div className="aurora-beam aurora-beam-5"></div>
+        <div className="aurora-beam aurora-beam-6"></div>
       </div>
       <div className="grid-overlay"></div>
 
@@ -289,7 +291,7 @@ export default function AdvertTimer() {
 
         {/* Floating time display centered in the arc */}
         <div className="time-display">
-          <div className="time-label">Flow time</div>
+          
           <div className="time-value">
             {formatTime(displaySeconds)}
           </div>
