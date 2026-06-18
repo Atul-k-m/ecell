@@ -3,6 +3,24 @@ import './AdvertLead.css';
 
 const MAX_TEAMS = 15;
 
+const TEAM_NAMES = [
+  "Aura 999+",
+  "MasterMonks",
+  "Mango",
+  "Vague Sense",
+  "AVENGERS",
+  "Achar-Papad",
+  "JEEVAN",
+  "Level X",
+  "Dexter",
+  "Team Spark",
+  "Ai Avengers",
+  "Nexora",
+  "Lakshmi Chit Funds",
+  "MODI-fy",
+  "Ministry of Chaos",
+];
+
 const calculateR1Score = (correct, timeMinutes) => {
   if (correct === undefined || correct === null) return 0;
   const baseScore = (correct / 15) * 25;
@@ -40,7 +58,7 @@ export default function AdvertLead() {
     }
     return Array.from({ length: MAX_TEAMS }, (_, i) => ({
       id: i + 1,
-      name: `Team ${i + 1}`,
+      name: TEAM_NAMES[i],
       r1Correct: "",
       r1Time: "",
       r2Correct: "",
@@ -109,7 +127,7 @@ export default function AdvertLead() {
     if (window.confirm("Are you sure you want to reset all data?")) {
       setTeams(Array.from({ length: MAX_TEAMS }, (_, i) => ({
         id: i + 1,
-        name: `Team ${i + 1}`,
+        name: TEAM_NAMES[i],
         r1Correct: "",
         r1Time: "",
         r2Correct: "",
