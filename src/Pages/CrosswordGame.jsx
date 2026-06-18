@@ -1077,8 +1077,8 @@ const CrosswordGame = () => {
 
   // Login state
   const [loggedIn, setLoggedIn] = useState(false);
-  const [teamName, setTeamName] = useState('Team Nucleus');
-  const [phoneNumber, setPhoneNumber] = useState('9876543210');
+  const [teamName, setTeamName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [loginError, setLoginError] = useState('');
 
   const [entryId, setEntryId] = useState(null);
@@ -1120,7 +1120,7 @@ const CrosswordGame = () => {
   const [focusedCell, setFocusedCell] = useState(null);
   
   // Progress & State
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(600);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [correctWords, setCorrectWords] = useState([]);
   const [wrongCells, setWrongCells] = useState([]);
@@ -1155,11 +1155,24 @@ const CrosswordGame = () => {
     let interval;
     if (isTimerRunning) {
       interval = setInterval(() => {
-        setTime(prev => prev + 1);
+        setTime(prev => {
+          if (prev <= 1) {
+            clearInterval(interval);
+            return 0;
+          }
+          return prev - 1;
+        });
       }, 1000);
     }
     return () => clearInterval(interval);
   }, [isTimerRunning]);
+
+  // Auto-submit when time is up
+  useEffect(() => {
+    if (isTimerRunning && time === 0) {
+      checkGameCompletion(correctWords, 0, incorrectAttempts, true);
+    }
+  }, [time, isTimerRunning, correctWords, incorrectAttempts]);
 
   // Determine active word based on focus and direction
   useEffect(() => {
@@ -1292,8 +1305,8 @@ const CrosswordGame = () => {
     }
   };
 
-  const checkGameCompletion = async (currentCorrectList, currentTime, currentIncorrectAttempts) => {
-    if (currentCorrectList.length === wordsData.length) {
+  const checkGameCompletion = async (currentCorrectList, currentTime, currentIncorrectAttempts, isTimeUp = false) => {
+    if (isTimeUp || currentCorrectList.length === wordsData.length) {
       setIsTimerRunning(false);
       setShowCompletion(true);
       // Calculate accuracy from passed-in values (avoids stale state)
@@ -1302,6 +1315,7 @@ const CrosswordGame = () => {
       flatGrid.forEach(row => row.forEach(cell => { if (cell) totalFilled++; }));
       const penalty = (currentIncorrectAttempts || 0) * 5;
       const accuracy = Math.max(0, 100 - penalty);
+      const elapsedSeconds = 600 - currentTime;
       // Save completion stats to MongoDB
       if (entryId) {
         try {
@@ -1310,8 +1324,9 @@ const CrosswordGame = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               entryId,
-              timeTaken: currentTime,
+              timeTaken: elapsedSeconds,
               accuracy,
+              solvedWordsCount: currentCorrectList.length,
             }),
           });
           const data = await res.json();
@@ -1623,11 +1638,11 @@ const CrosswordGame = () => {
             ))}
           </div>
           <div className="completion-modal">
-            <div className="trophy">🏆</div>
-            <h2>Puzzle Complete!</h2>
+            <div className="trophy">{time === 0 ? '⏳' : '🏆'}</div>
+            <h2>{time === 0 ? "Time's Up!" : 'Puzzle Complete!'}</h2>
             <div className="time-display-big">
               <span className="stat-label">Your Time</span>
-              <span className="stat-value">{formatTime(time)}</span>
+              <span className="stat-value">{formatTime(600 - time)}</span>
             </div>
           </div>
         </div>

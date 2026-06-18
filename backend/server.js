@@ -702,11 +702,11 @@ app.post("/api/crossword/register", async (req, res) => {
 // Save crossword completion stats
 app.post("/api/crossword/complete", async (req, res) => {
   try {
-    const { entryId, timeTaken, accuracy } = req.body;
+    const { entryId, timeTaken, accuracy, solvedWordsCount } = req.body;
 
     const entry = await CrosswordEntry.findByIdAndUpdate(
       entryId,
-      { completedAt: new Date(), timeTaken, accuracy },
+      { completedAt: new Date(), timeTaken, accuracy, solvedWordsCount },
       { new: true }
     );
 
@@ -737,8 +737,8 @@ app.get("/api/crossword/leaderboard", async (req, res) => {
   try {
     const entries = await CrosswordEntry.find(
       { completedAt: { $ne: null }, timeTaken: { $ne: null }, teamName: { $not: /^team nucleus$/i } },
-      { teamName: 1, timeTaken: 1, completedAt: 1 }
-    ).sort({ timeTaken: 1 });
+      { teamName: 1, timeTaken: 1, completedAt: 1, solvedWordsCount: 1 }
+    ).sort({ solvedWordsCount: -1, timeTaken: 1 });
     res.json({ success: true, entries });
   } catch (error) {
     console.error("Error fetching leaderboard:", error);

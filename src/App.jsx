@@ -75,6 +75,7 @@ const BuildYourIdeaPage = lazy(() => import("./Pages/BuildYourIdeaPage.jsx"));
 const CrosswordGame = lazy(() => import("./Pages/CrosswordGame.jsx"));
 const CrosswordAdmin = lazy(() => import("./Pages/CrosswordAdmin.jsx"));
 const CrosswordLeaderboard = lazy(() => import("./Pages/CrosswordLeaderboard.jsx"));
+const DummyLeaderboard = lazy(() => import("./Pages/DummyLeaderboard.jsx"));
 const AdvertTimer = lazy(() => import("./Pages/AdvertTimer.jsx"));
 const AdvertTimerV2 = lazy(() => import("./Pages/AdvertTimerV2.jsx"));
 const NotFound = lazy(() => import("./Pages/NotFound.jsx"));
@@ -149,7 +150,7 @@ function App() {
     setTimeout(() => setShowContent(true), 100);
   };
 
-  const shouldShowNavbar = location.pathname !== "/event-higher-lower" && location.pathname !== "/recap" && location.pathname !== "/advert/game/crossword" && location.pathname !== "/advert/game/leaderboard" && location.pathname !== "/event/timer";
+  const shouldShowNavbar = location.pathname !== "/event-higher-lower" && location.pathname !== "/recap" && location.pathname !== "/advert/game/crossword" && location.pathname !== "/advert/game/leaderboard" && location.pathname !== "/event/timer" && location.pathname !== "/advert/game/leaderboard2";
 
   useEffect(() => {
     // Increment hit counter once per session
@@ -241,6 +242,7 @@ function App() {
                     <Route path="/build-your-idea" element={<BuildYourIdeaPage />} />
                     <Route path="/advert/game/crossword" element={<CrosswordGame />} />
                     <Route path="/advert/game/leaderboard" element={<CrosswordLeaderboard />} />
+                    <Route path="/advert/game/leaderboard2" element={<DummyLeaderboard />} />
                     <Route path="/advert/admin" element={<CrosswordAdmin />} />
                     <Route path="/event/timer" element={<AdvertTimer />} />
                     <Route path="/event/timer2" element={<AdvertTimerV2 />} />

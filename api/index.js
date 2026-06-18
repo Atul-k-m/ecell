@@ -27,12 +27,13 @@ const crosswordEntrySchema = new mongoose.Schema({
   completedAt: { type: Date, default: null },
   timeTaken: { type: Number, default: null },
   accuracy: { type: Number, default: null },
+  solvedWordsCount: { type: Number, default: 0 },
   registeredAt: { type: Date, default: Date.now },
 });
 
 // Prevent model re-registration in serverless warm-starts
 const GameState = mongoose.models.GameState || mongoose.model("GameState", gameStateSchema);
-const CrosswordEntry = mongoose.models.CrosswordEntry || mongoose.model("CrosswordEntry", crosswordEntrySchema);
+const CrosswordEntry = mongoose.models.CrosswordEntry || mongoose.model("CrosswordEntry", crosswordEntrySchema, "Demousers");
 
 // ── DB Connection (cached for serverless) ───────────────────────────────────
 let dbConnected = false;
@@ -115,11 +116,12 @@ app.post("/api/crossword/register", async (req, res) => {
 app.post("/api/crossword/complete", async (req, res) => {
   try {
     await connectDB();
-    const { entryId, timeTaken, accuracy } = req.body;
+    const { entryId, timeTaken, accuracy, solvedWordsCount } = req.body;
     await CrosswordEntry.findByIdAndUpdate(entryId, {
       completedAt: new Date(),
       timeTaken,
       accuracy,
+      solvedWordsCount,
     });
     res.json({ success: true });
   } catch (err) {
@@ -144,8 +146,8 @@ app.get("/api/crossword/leaderboard", async (req, res) => {
     await connectDB();
     const entries = await CrosswordEntry.find(
       { completedAt: { $ne: null }, timeTaken: { $ne: null }, teamName: { $not: /^team nucleus$/i } },
-      { teamName: 1, timeTaken: 1, completedAt: 1 }  // only return needed fields
-    ).sort({ timeTaken: 1 }); // ascending = fastest first
+      { teamName: 1, timeTaken: 1, completedAt: 1, solvedWordsCount: 1 }  // only return needed fields
+    ).sort({ solvedWordsCount: -1, timeTaken: 1 }); // descending by words solved, then fastest first
     res.json({ success: true, entries });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });

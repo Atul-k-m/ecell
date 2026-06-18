@@ -53,6 +53,7 @@ export default function CrosswordLeaderboard() {
                 <tr>
                   <th style={{ fontSize: '1rem', padding: '16px' }}>Rank</th>
                   <th style={{ fontSize: '1rem', padding: '16px' }}>Team Name</th>
+                  <th style={{ fontSize: '1rem', padding: '16px', textAlign: 'center' }}>Words Solved</th>
                   <th style={{ fontSize: '1rem', padding: '16px', textAlign: 'right' }}>Time Taken</th>
                 </tr>
               </thead>
@@ -76,6 +77,9 @@ export default function CrosswordLeaderboard() {
                     <tr key={e._id} style={rowStyle}>
                       <td style={{ fontSize: '1.1rem', fontWeight: 700 }}>{rankDisplay}</td>
                       <td style={{ fontSize: '1.1rem', fontWeight: 600 }}>{e.teamName}</td>
+                      <td style={{ fontSize: '1.2rem', fontWeight: 700, color: '#3b82f6', textAlign: 'center' }}>
+                        {e.solvedWordsCount || 0}
+                      </td>
                       <td style={{ fontSize: '1.2rem', fontWeight: 700, color: '#16a34a', textAlign: 'right' }}>
                         {formatTime(e.timeTaken)}
                       </td>
