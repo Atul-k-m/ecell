@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './AdvertLead.css';
 
-const MAX_TEAMS = 15;
+const MAX_TEAMS = 16;
 
 const TEAM_NAMES = [
   "Aura 999+",
@@ -19,6 +19,7 @@ const TEAM_NAMES = [
   "Lakshmi Chit Funds",
   "MODI-fy",
   "Ministry of Chaos",
+  "low battery",
 ];
 
 const calculateR1Score = (correct, timeMinutes) => {
