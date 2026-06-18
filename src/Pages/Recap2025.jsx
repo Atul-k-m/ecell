@@ -15,9 +15,6 @@ import { SmoothScroll } from "../components/ui/smooth-scroll";
 import maxsonImg from "./assets/team/maxson.JPG";
 import mohitImg from "./assets/team/mohit.jpeg";
 import nishithaImg from "./assets/team/nishitha.jpeg";
-import atulImg from "./assets/team/atul.jpg";
-import tirthImg from "./assets/team/tirth.jpg";
-import akhileshImg from "./assets/team/akhilesh.jpeg";
 import gaganjithImg from "./assets/team/gaganjith.jpg";
 import shriyaImg from "./assets/team/shriya.jpg";
 import hiteshImg from "./assets/team/hitesh.jpeg";
@@ -448,13 +445,28 @@ const Recap2025 = () => {
                 className="w-full h-full object-contain mix-blend-multiply opacity-90"
               />
             </div>
+            <div
+              className="absolute -bottom-10 md:-bottom-24 -right-10 md:-right-40 w-48 md:w-[26rem] pointer-events-none z-0 scale-x-[-1]"
+              style={{
+                maskImage: "linear-gradient(to right, transparent 0%, black 25%, black 60%, transparent 95%), linear-gradient(to bottom, black 55%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 25%, black 60%, transparent 95%), linear-gradient(to bottom, black 55%, transparent 100%)",
+                maskComposite: "intersect",
+                WebkitMaskComposite: "source-in",
+              }}
+            >
+              <img
+                src={flowerImg}
+                alt="decorative flower"
+                className="w-full h-full object-contain mix-blend-multiply opacity-90"
+              />
+            </div>
 
             <div className="border-t-2 border-b-2 border-zinc-900 py-8 mb-16 flex flex-col md:flex-row md:items-baseline justify-between gap-4 relative z-10">
               <ScrollFillText text="The Farewell Chronicle" />
               <p className="font-sans text-xs tracking-[0.2em] uppercase text-zinc-500 font-medium">Class of 2025–26</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-16 relative z-10">
+            <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-8 gap-y-16 relative z-10">
               {[
                 { name: "Maxson Mathew", img: maxsonImg, rotation: "-rotate-2" },
                 { name: "Mohit Monnappa T N", img: mohitImg, imgClass: "scale-[1.1] object-top origin-top", rotation: "rotate-2" },
@@ -462,13 +474,11 @@ const Recap2025 = () => {
                 { name: "Gaganjith R", img: gaganjithImg, rotation: "-rotate-2" },
                 { name: "Shriya Chowdary", img: shriyaImg, rotation: "rotate-2" },
                 { name: "Fardeen Khan K", img: fardeeImg, rotation: "-rotate-2" },
-                { name: "Atul Kumar", img: atulImg, rotation: "rotate-1" },
                 { name: "Hitesh R", img: hiteshImg, rotation: "-rotate-3" },
-                { name: "Tirth Panchori", img: tirthImg, rotation: "rotate-2" },
-                { name: "Akhilesh Pachnanda", img: akhileshImg, rotation: "rotate-1" },
                 { name: "Bhanu Prasad N", img: bhanuImg, rotation: "-rotate-2" },
               ].map((person, i) => (
-                <TiltCard key={i} rotation={person.rotation}>
+                <div key={i} className="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.5rem)]">
+                  <TiltCard rotation={person.rotation}>
                   {/* Clean CSS Polaroid Frame */}
                   <div className="relative w-full aspect-[3/4] bg-[#18181b] drop-shadow-xl border border-black/30 z-0 flex flex-col justify-between p-3 md:p-4 pb-12 md:pb-14">
                       
@@ -488,7 +498,8 @@ const Recap2025 = () => {
                           </p>
                       </div>
                   </div>
-                </TiltCard>
+                  </TiltCard>
+                </div>
               ))}
             </div>
           </section>
