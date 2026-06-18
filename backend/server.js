@@ -675,16 +675,15 @@ app.post("/api/crossword/register", async (req, res) => {
         { new: true, upsert: true }
       );
     } else {
-      // Normal team: Check if team already exists
-      const existingEntry = await CrosswordEntry.findOne({ teamName: trimmedName });
-      if (existingEntry) {
-        return res.status(403).json({ success: false, error: "This team has already played or is currently playing." });
+      // Normal team: Check if team already exists and phone matches
+      const existingEntry = await CrosswordEntry.findOne({ teamName: trimmedName, phone: phone });
+      if (!existingEntry) {
+        return res.status(403).json({ success: false, error: "Team not found or phone number is incorrect. Only pre-registered teams can play." });
       }
-
-      entry = await CrosswordEntry.create({
-        teamName: trimmedName,
-        phone,
-      });
+      if (existingEntry.completedAt !== null) {
+        return res.status(403).json({ success: false, error: "Your team has already completed the crossword!" });
+      }
+      entry = existingEntry;
     }
 
     res.status(201).json({ success: true, entryId: entry._id });
