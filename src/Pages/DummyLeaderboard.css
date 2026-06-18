@@ -1,0 +1,317 @@
+/* DummyLeaderboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* ─────────────────────────────────────────────────────────────── */
+/*  Page shell                                                    */
+/* ─────────────────────────────────────────────────────────────── */
+.dummy-leaderboard-page {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background-color: #f0f4ff;
+  background-image: 
+    linear-gradient(rgba(124, 133, 224, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 133, 224, 0.15) 1px, transparent 1px),
+    linear-gradient(160deg, #f0f4ff 0%, #dde4f5 100%);
+  background-size: 20px 20px, 20px 20px, 100% 100%;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 20px 8vw 30px;
+  color: #0f172a;
+}
+
+.dummy-leaderboard-container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────────────────────── */
+/*  Header                                                        */
+/* ─────────────────────────────────────────────────────────────── */
+.dl-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dl-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.dl-subtitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-top: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────── */
+/*  Podium area                                                   */
+/* ─────────────────────────────────────────────────────────────── */
+.podium-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  /* Leave room at the top & right for the 3D faces */
+  padding: 60px 28px 0 0;
+  margin-bottom: 56px;
+}
+
+.podium-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.podium-column.second { width: 120px; z-index: 1; }
+.podium-column.first { width: 168px; z-index: 2; }
+.podium-column.third { width: 120px; z-index: 3; }
+
+/* Team name above the podium */
+.podium-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.podium-column.second .podium-name { max-width: 120px; }
+.podium-column.first .podium-name { max-width: 168px; font-size: 1.2rem; font-weight: 800; }
+.podium-column.third .podium-name { max-width: 120px; }
+
+/* ─────────────────────────────────────────────────────────────── */
+/*  3-D Podium block                                              */
+/*                                                                */
+/*  Depth constant: D = 22px, 45° cabinet projection             */
+/*                                                                */
+/*  Top face (lighter) – parallelogram, positioned at            */
+/*    left: -D, top: -D                                           */
+/*    width: W + D, height: D                                     */
+/*    clip-path corners (in px):                                  */
+/*      back-top-left   → (0, 0)                                  */
+/*      back-top-right  → (W, 0)       = (100% − D, 0)           */
+/*      front-top-right → (W+D, D)     = (100%, 100%)            */
+/*      front-top-left  → (D, D)       = (D, 100%)               */
+/*                                                                */
+/*  Left face (darker) – parallelogram, positioned at            */
+/*    left: -D, top: -D                                           */
+/*    width: D, height: H + D                                     */
+/*    clip-path corners (in px):                                  */
+/*      back-top-left    → (0, 0)                                 */
+/*      front-top-left   → (D, D)       = (D, D)                 */
+/*      front-bot-left   → (D, H+D)     = (D, 100%)              */
+/*      back-bot-left    → (0, H)       = (0, 100% − D)          */
+/* ─────────────────────────────────────────────────────────────── */
+
+/* Block wrapper to allow overflow for faces */
+.podium-block-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* Front face */
+.podium-block {
+  position: relative;
+  width: 100%;
+  background: #9A97FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Top face */
+.face-top {
+  position: absolute;
+  left: 0;
+  top: -22px;
+  width: calc(100% + 22px);     /* W + D */
+  height: 22px;                  /* D */
+  background: #B2AEFF;
+  clip-path: polygon(
+    22px       0px,              /* back-top-left  */
+    100%       0px,              /* back-top-right */
+    calc(100% - 22px) 100%,      /* front-top-right */
+    0px        100%              /* front-top-left  */
+  );
+}
+
+/* Right side face */
+.face-right {
+  position: absolute;
+  left: 100%;
+  top: -22px;
+  width: 22px;                   /* D */
+  height: calc(100% + 22px);    /* H + D */
+  background: #7670E8;
+  clip-path: polygon(
+    100%       0px,              /* back-top-right   */
+    0px        22px,             /* front-top-right  */
+    0px        100%,             /* front-bot-right  */
+    100%       calc(100% - 22px) /* back-bot-right   */
+  );
+}
+
+/* ── Column-specific colours ─────────────────────────────────── */
+
+/* ── Column-specific dimensions and rounding ────────────────── */
+
+.podium-column.first .podium-block {
+  height: 162px;
+  border-radius: 0;
+}
+
+.podium-column.second .podium-block {
+  height: 108px;
+  border-radius: 16px 0 0 16px;
+}
+
+.podium-column.third .podium-block {
+  height: 81px;
+  border-radius: 0 16px 16px 0;
+}
+
+/* Numbers */
+.podium-number {
+  font-size: 72px;
+  font-weight: 800;
+  color: #ffffff;
+  opacity: 0.85;
+  line-height: 1;
+  font-family: 'Outfit', sans-serif;
+  user-select: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─────────────────────────────────────────────────────────────── */
+/*  Leaderboard card                                              */
+/* ─────────────────────────────────────────────────────────────── */
+.leaderboard-table-wrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1.5px solid #cbd5e1;
+  overflow: hidden;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.03),
+    0 4px 6px -2px rgba(0, 0, 0, 0.01);
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.leaderboard-table th {
+  background: #12192e;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 10px 16px;
+  letter-spacing: 0.05em;
+}
+
+.leaderboard-table th.col-rank {
+  width: 30%;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.leaderboard-table th.col-team {
+  text-align: center;
+}
+
+.leaderboard-table td {
+  padding: 6px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1e293b;
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.15s ease;
+}
+
+.leaderboard-table tr:last-child td {
+  border-bottom: none;
+}
+
+.leaderboard-table td.cell-rank {
+  text-align: center;
+  border-right: 1px solid #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.leaderboard-table td.cell-team {
+  text-align: center;
+}
+
+.leaderboard-table tr:hover td {
+  background: #f8fafc;
+}
+
+/* Row Styling & Highlights */
+.leaderboard-table tr.row-first td {
+  background: #fde68a; /* More powerful Gold */
+}
+.leaderboard-table tr.row-first:hover td {
+  background: #fcd34d;
+}
+
+.leaderboard-table tr.row-second td {
+  background: #cbd5e1; /* Darker Silver */
+}
+.leaderboard-table tr.row-second:hover td {
+  background: #94a3b8;
+}
+
+.leaderboard-table tr.row-third td {
+  background: #fed7aa; /* More powerful Bronze */
+}
+.leaderboard-table tr.row-third:hover td {
+  background: #fdba74;
+}
+
+.leaderboard-table tr.row-lavender td {
+  background: #e0e7ff; /* Higher opacity/saturation Lavender */
+}
+.leaderboard-table tr.row-lavender:hover td {
+  background: #c7d2fe;
+}
+
+/* ─────────────────────────────────────────────────────────────── */
+/*  Responsive                                                    */
+/* ─────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .podium-container { padding: 40px 14px 0 0; gap: 0; }
+  
+  .podium-column.second { width: 80px; }
+  .podium-column.first { width: 112px; }
+  .podium-column.third { width: 80px; }
+  
+  .podium-block { width: 100%; }
+  
+  .podium-column.second .podium-name { max-width: 80px; font-size: 0.8rem; }
+  .podium-column.first .podium-name { max-width: 112px; font-size: 0.9rem; }
+  .podium-column.third .podium-name { max-width: 80px; font-size: 0.8rem; }
+  
+  .podium-number { font-size: 48px; }
+  
+  /* Re-declare heights for narrow screens */
+  .podium-column.first .podium-block  { height: 126px; border-radius: 0; }
+  .podium-column.second .podium-block { height: 84px;  border-radius: 10px 0 0 10px; }
+  .podium-column.third .podium-block  { height: 63px;  border-radius: 0 10px 10px 0; }
+  
+  /* Scale down depth faces */
+  .face-top   { left: 0; top: -14px; width: calc(100% + 14px); height: 14px; }
+  .face-right { left: 100%; top: -14px; width: 14px; height: calc(100% + 14px); }
+  .face-top   { clip-path: polygon(14px 0px, 100% 0px, calc(100% - 14px) 100%, 0px 100%); }
+  .face-right { clip-path: polygon(100% 0px, 0px 14px, 0px 100%, 100% calc(100% - 14px)); }
+}
