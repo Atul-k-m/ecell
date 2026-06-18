@@ -12,7 +12,6 @@ import paperPlaneImg from "./assets/recap/paper-plane.png";
 import VintageImage from "../components/VintageImage";
 import { StaggeredGrid } from "../components/ui/staggered-grid";
 import { SmoothScroll } from "../components/ui/smooth-scroll";
-import RecapMenu from "../components/RecapMenu";
 import maxsonImg from "./assets/team/maxson.JPG";
 import mohitImg from "./assets/team/mohit.jpeg";
 import nishithaImg from "./assets/team/nishitha.jpeg";
@@ -234,8 +233,6 @@ const TiltCard = ({ children, rotation }) => {
 };
 
 const Recap2025 = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const images = [
     img1, img3, img5, img7, img9, img11,
     img13, img15, img17, img19, img21, img23,
@@ -261,9 +258,7 @@ const Recap2025 = () => {
 
   return (
     <SmoothScroll>
-      <RecapMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      
-      <div className="min-h-screen bg-[#e8dfd1] text-[#2d2b27] font-serif selection:bg-[#2d2b27] selection:text-[#e8dfd1] relative overflow-x-hidden pr-12 md:pr-16"
+      <div className="min-h-screen bg-[#e8dfd1] text-[#2d2b27] font-serif selection:bg-[#2d2b27] selection:text-[#e8dfd1] relative overflow-x-hidden"
       style={{
         backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(180deg, #e4d7c5 0%, #ede6db 50%, #e4d7c5 100%)",
         backgroundBlendMode: "overlay, normal"
@@ -277,35 +272,7 @@ const Recap2025 = () => {
         style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 4px)" }}
       ></div>
 
-      {/* Right Sidebar Menu */}
-      <div className={`fixed top-0 right-0 h-screen w-12 md:w-16 bg-black z-[90] flex flex-col items-center py-6 text-white font-sans border-l border-zinc-800 transition-transform duration-500 ease-in-out ${isMenuOpen ? 'translate-x-full' : 'translate-x-0'}`}>
-        {/* Menu Icon - Absolute Top */}
-        <div className="absolute top-6 w-full flex justify-center">
-          <button
-            onClick={() => setIsMenuOpen(true)}
-            className="flex flex-col gap-1.5 p-2 bg-transparent border-none outline-none focus:outline-none focus:ring-0 active:outline-none hover:opacity-70 transition-opacity "
-            style={{ background: 'none', outline: 'none' }}
-          >
-            <div className="w-5 md:w-6 h-[2px] bg-white"></div>
-            <div className="w-5 md:w-6 h-[2px] bg-white"></div>
-            <div className="w-5 md:w-6 h-[2px] bg-white"></div>
-          </button>
-        </div>
-
-        {/* Vertical Text - Centered */}
-        <div className="flex-1 flex justify-center items-center">
-          <div
-            className="whitespace-nowrap flex items-center gap-3 text-xs md:text-sm tracking-[0.2em] font-medium"
-            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-          >
-            <span className="text-white">E-CELL BMSIT</span>
-            <span className="w-1 h-1 bg-zinc-500 rounded-full"></span>
-            <span className="text-white">2025 RECAP</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Hero Image - Full bleed up to sidebar */}
+      {/* Hero Image - Full bleed */}
       <div className="relative w-full h-[70vh] md:h-[78vh] overflow-hidden">
         <div className="absolute inset-0">
           <VintageImage
@@ -335,7 +302,6 @@ const Recap2025 = () => {
             {/* Masthead Header */}
             <div className="flex justify-between items-center text-xs font-sans tracking-widest uppercase mb-4 px-2">
               <span>Where Ideas Turn Into Impact</span>
-              <span>2025 — 2026 Edition</span>
             </div>
 
             {/* Massive Masthead Title */}
@@ -529,170 +495,6 @@ const Recap2025 = () => {
 
           {/* Vision & Mission Section */}
 
-
-          {/* Story Continues Section */}
-          <section id="socials-section" className="py-16 md:py-15 flex flex-col items-center justify-center relative overflow-x-clip overflow-y-visible">
-            <div className="relative flex flex-col items-center select-none text-[#2d2b27]">
-
-              {/* Paper Plane Impact Animation */}
-              <motion.div 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={{
-                  hidden: { x: 0, y: 0 },
-                  visible: { 
-                    x: [0, 0, -10, 8, -6, 4, -2, 0], 
-                    y: [0, 0, 8, -6, 4, -2, 0],
-                    transition: { duration: 1.6, times: [0, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 1], ease: "easeOut" } // Shake happens at 0.8s (0.5 * 1.6 = 0.8)
-                  }
-                }}
-                className="relative flex flex-col items-center justify-center w-full min-h-[300px] md:min-h-[500px]"
-              >
-                
-                {/* Shockwave Flash */}
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, scale: 0 },
-                    visible: { 
-                      opacity: [0, 0, 1, 0], 
-                      scale: [0, 0, 1.5, 6],
-                      transition: { duration: 1.3, times: [0, 0.61, 0.62, 1], ease: "easeOut" } // 0.61 * 1.3 ≈ 0.8s
-                    }
-                  }}
-                  className="absolute z-20 w-32 h-32 bg-[#e8dfd1] rounded-full pointer-events-none mix-blend-screen"
-                />
-
-                {/* 2025 - Splitted Digits */}
-                <div className="absolute flex justify-center text-[9rem] md:text-[16rem] leading-none font-black text-black/20 font-sans tracking-tighter pointer-events-none">
-                  <motion.div
-                    variants={{
-                      hidden: { x: 0, y: 0, opacity: 1, rotate: 0 },
-                      visible: { 
-                        x: -400, y: 150, opacity: [1, 1, 0], rotate: -45,
-                        transition: { type: "spring", stiffness: 80, damping: 15, mass: 1, delay: 0.8 }
-                      }
-                    }}
-                  >2</motion.div>
-                  <motion.div
-                    variants={{
-                      hidden: { x: 0, y: 0, opacity: 1, rotate: 0 },
-                      visible: { 
-                        x: -200, y: 300, opacity: [1, 1, 0], rotate: -70,
-                        transition: { type: "spring", stiffness: 80, damping: 15, mass: 1, delay: 0.8 }
-                      }
-                    }}
-                  >0</motion.div>
-                  <motion.div
-                    variants={{
-                      hidden: { x: 0, y: 0, opacity: 1, rotate: 0 },
-                      visible: { 
-                        x: 200, y: -250, opacity: [1, 1, 0], rotate: 40,
-                        transition: { type: "spring", stiffness: 80, damping: 15, mass: 1, delay: 0.8 }
-                      }
-                    }}
-                  >2</motion.div>
-                  <motion.div
-                    variants={{
-                      hidden: { x: 0, y: 0, opacity: 1, rotate: 0 },
-                      visible: { 
-                        x: 400, y: 150, opacity: [1, 1, 0], rotate: 60,
-                        transition: { type: "spring", stiffness: 80, damping: 15, mass: 1, delay: 0.8 }
-                      }
-                    }}
-                  >5</motion.div>
-                </div>
-
-                {/* Paper Plane - Curved Flight Path */}
-                <motion.div
-                  variants={{
-                    hidden: { x: 450, y: -700, opacity: 0, rotate: -80 },
-                    visible: { 
-                      x: [450, 225, 112, 0, 0], 
-                      y: [-700, 100, 150, 0, 0],
-                      rotate: [-80, -45, 0, 45, 45],
-                      opacity: [0, 1, 1, 1, 0],
-                      transition: { 
-                        duration: 1.0, 
-                        times: [0, 0.4, 0.6, 0.8, 0.9], // Hits center exactly at 0.8s
-                        ease: ["linear", "easeOut", "easeIn", "linear"] 
-                      }
-                    }
-                  }}
-                  className="absolute z-40"
-                >
-                  <img 
-                    src={paperPlaneImg} 
-                    alt="Paper Plane Dive" 
-                    className="w-48 md:w-80 mix-blend-multiply drop-shadow-xl" 
-                  />
-                </motion.div>
-
-                {/* Dust Explosion Particles */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 z-30 pointer-events-none flex justify-center items-center">
-                  {[...Array(60)].map((_, i) => {
-                    const angle = Math.random() * Math.PI * 2;
-                    const distance = 80 + Math.random() * 400; 
-                    const endX = Math.cos(angle) * distance;
-                    const endY = Math.sin(angle) * distance;
-                    const scale = 0.5 + Math.random() * 2;
-                    const isPaper = Math.random() > 0.4;
-                    return (
-                      <motion.div
-                        key={`dust-exp-${i}`}
-                        variants={{
-                          hidden: { x: 0, y: 0, opacity: 0, scale: 0, rotate: 0 },
-                          visible: { 
-                            x: [0, endX], 
-                            y: [0, endY],
-                            opacity: [0, 1, 0],
-                            scale: [0, scale, scale * 1.5],
-                            rotate: Math.random() * 360,
-                            transition: { duration: 1.5 + Math.random(), delay: 0.8, ease: "easeOut" }
-                          }
-                        }}
-                        className={`absolute ${isPaper ? 'bg-[#e8dfd1] rounded-full blur-[4px]' : 'bg-[#2d2b27] rounded-sm blur-[1px]'} z-30`}
-                        style={{ width: isPaper ? 40 + Math.random()*60 : 5 + Math.random()*20, height: isPaper ? 40 + Math.random()*60 : 5 + Math.random()*20 }}
-                      />
-                    );
-                  })}
-                </div>
-
-                {/* 2026 */}
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: { 
-                      opacity: 1,
-                      transition: { duration: 1.5, delay: 1.5, ease: "easeInOut" }
-                    }
-                  }}
-                  className="relative text-[9rem] md:text-[16rem] leading-none font-black text-[#2d2b27] font-sans tracking-tighter z-10"
-                >
-                  2026
-                </motion.div>
-              </motion.div>
-
-              {/* The Story Continues */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 2 }}
-                className="mt-16 md:mt-24 flex flex-col items-center gap-6"
-              >
-                <div className="tracking-[0.5em] md:tracking-[0.8em] text-xs md:text-sm font-bold uppercase">
-                  The Story Continues
-                </div>
-                <div className="flex gap-2 opacity-50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#2d2b27]"></span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#2d2b27]"></span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#2d2b27]"></span>
-                </div>
-              </motion.div>
-
-            </div>
-          </section>
 
           {/* E-CELL Editorial Poster Section */}
           <section id="network-section" className="relative w-full mt-20 md:mt-28 pb-20 overflow-hidden">
