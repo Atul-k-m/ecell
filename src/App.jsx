@@ -78,6 +78,7 @@ const CrosswordLeaderboard = lazy(() => import("./Pages/CrosswordLeaderboard.jsx
 const DummyLeaderboard = lazy(() => import("./Pages/DummyLeaderboard.jsx"));
 const AdvertTimer = lazy(() => import("./Pages/AdvertTimer.jsx"));
 const AdvertTimerV2 = lazy(() => import("./Pages/AdvertTimerV2.jsx"));
+const AdvertLead = lazy(() => import("./Pages/AdvertLead.jsx"));
 const NotFound = lazy(() => import("./Pages/NotFound.jsx"));
 
 export const PreloaderContext = createContext();
@@ -150,7 +151,7 @@ function App() {
     setTimeout(() => setShowContent(true), 100);
   };
 
-  const shouldShowNavbar = location.pathname !== "/event-higher-lower" && location.pathname !== "/recap" && location.pathname !== "/advert/game/crossword" && location.pathname !== "/advert/game/leaderboard" && location.pathname !== "/event/timer" && location.pathname !== "/advert/game/leaderboard2";
+  const shouldShowNavbar = location.pathname !== "/event-higher-lower" && location.pathname !== "/recap" && location.pathname !== "/advert/game/crossword" && location.pathname !== "/advert/game/leaderboard" && location.pathname !== "/advert/game/leaderboard2" && location.pathname !== "/event/timer" && location.pathname !== "/event/timer2" && location.pathname !== "/advert/lead";
 
   useEffect(() => {
     // Increment hit counter once per session
@@ -246,6 +247,7 @@ function App() {
                     <Route path="/advert/admin" element={<CrosswordAdmin />} />
                     <Route path="/event/timer" element={<AdvertTimer />} />
                     <Route path="/event/timer2" element={<AdvertTimerV2 />} />
+                    <Route path="/advert/lead" element={<AdvertLead />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </Suspense>

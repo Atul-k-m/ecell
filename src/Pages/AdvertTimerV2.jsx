@@ -7,6 +7,7 @@ export default function AdvertTimerV2() {
   const [timeLeft, setTimeLeft] = useState(5 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [customMinutes, setCustomMinutes] = useState("");
+  const [customSeconds, setCustomSeconds] = useState("");
   const [showCustomInput, setShowCustomInput] = useState(false);
 
   const requestRef = React.useRef();
@@ -53,22 +54,25 @@ export default function AdvertTimerV2() {
 
   const toggleTimer = () => setIsRunning(!isRunning);
 
-  const resetTimer = (minutes) => {
-    const ms = minutes * 60 * 1000;
+  const resetTimer = (totalSeconds) => {
+    const ms = totalSeconds * 1000;
     totalTimeMsRef.current = ms;
     timeLeftMsRef.current = ms;
     setSmoothProgress(1);
-    setDisplaySeconds(minutes * 60);
-    setTotalTime(minutes * 60);
+    setDisplaySeconds(totalSeconds);
+    setTotalTime(totalSeconds);
     setIsRunning(false);
   };
 
   const handleCustomSet = (e) => {
     e.preventDefault();
-    const mins = parseInt(customMinutes);
-    if (!isNaN(mins) && mins > 0) {
-      resetTimer(mins);
+    const mins = parseInt(customMinutes) || 0;
+    const secs = parseInt(customSeconds) || 0;
+    const totalSecs = mins * 60 + secs;
+    if (totalSecs > 0) {
+      resetTimer(totalSecs);
       setCustomMinutes("");
+      setCustomSeconds("");
       setShowCustomInput(false);
     }
   };
@@ -166,37 +170,47 @@ export default function AdvertTimerV2() {
         <div className="nav-items">
           <button 
             className={`nav-item ${totalTime === 2 * 60 ? 'active' : ''}`}
-            onClick={() => resetTimer(2)}
+            onClick={() => resetTimer(2 * 60)}
           >
             2 Min
           </button>
           <button 
             className={`nav-item ${totalTime === 3 * 60 ? 'active' : ''}`}
-            onClick={() => resetTimer(3)}
+            onClick={() => resetTimer(3 * 60)}
           >
             3 Min
           </button>
           <button 
             className={`nav-item ${totalTime === 5 * 60 ? 'active' : ''}`}
-            onClick={() => resetTimer(5)}
+            onClick={() => resetTimer(5 * 60)}
           >
             5 Min
           </button>
           
           {showCustomInput ? (
-            <form onSubmit={handleCustomSet} className="nav-custom-form">
+            <form onSubmit={handleCustomSet} className="nav-custom-form" style={{ display: 'flex', gap: '0.25rem', alignItems: 'center' }}>
               <input 
                 type="number"
                 value={customMinutes}
                 onChange={(e) => setCustomMinutes(e.target.value)}
                 className="nav-custom-input"
                 autoFocus
-                onBlur={() => {
-                  if (customMinutes === "") setShowCustomInput(false);
-                }}
-                placeholder="MINS"
-                min="1"
+                placeholder="MIN"
+                min="0"
+                style={{ width: '60px', textAlign: 'center' }}
               />
+              <span style={{ color: 'rgba(255, 255, 255, 0.5)' }}>:</span>
+              <input 
+                type="number"
+                value={customSeconds}
+                onChange={(e) => setCustomSeconds(e.target.value)}
+                className="nav-custom-input"
+                placeholder="SEC"
+                min="0"
+                max="59"
+                style={{ width: '60px', textAlign: 'center' }}
+              />
+              <button type="submit" style={{ display: 'none' }}>Set</button>
             </form>
           ) : (
             <button 

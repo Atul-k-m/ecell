@@ -1,0 +1,245 @@
+.advert-lead-page {
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.al-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.al-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.btn-reset {
+  background: #ff2a00;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-reset:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.al-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1300px) {
+  .al-content {
+    flex-direction: row;
+  }
+  .al-inputs-section {
+    flex: 2;
+    overflow-x: auto;
+  }
+  .al-leaderboard-section {
+    flex: 1.2;
+    min-width: 500px;
+  }
+}
+
+.al-inputs-section h2, .al-leaderboard-section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #a3a3a3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+th {
+  background: #222;
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sub-th {
+  font-size: 0.75rem;
+  background: #1f1f1f;
+}
+
+.border-left {
+  border-left: 1px solid #333;
+}
+
+tbody tr:hover {
+  background: #252525;
+}
+
+.input-name {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  width: 120px;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.input-name:focus {
+  border-color: #666;
+  outline: none;
+  background: #111;
+}
+
+.input-num {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  width: 60px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.input-num:focus {
+  border-color: #22c55e;
+  outline: none;
+}
+
+.input-time {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  width: 100px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.input-time:focus {
+  border-color: #22c55e;
+  outline: none;
+}
+
+.r3-actions {
+  min-width: 150px;
+}
+
+.r3-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-r3 {
+  background: #2d3748;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  width: 36px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.8rem;
+  transition: background 0.2s;
+}
+
+.btn-r3:hover {
+  background: #4a5568;
+}
+
+.btn-r3.neg {
+  background: #7f1d1d;
+}
+
+.btn-r3.neg:hover {
+  background: #991b1b;
+}
+
+.r3-score-display {
+  font-weight: bold;
+  min-width: 24px;
+  text-align: center;
+  color: #22c55e;
+}
+
+.al-lb-table tbody tr {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.al-lb-table td {
+  font-variant-numeric: tabular-nums;
+}
+
+.lb-name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.lb-total {
+  font-weight: bold;
+  color: #22c55e;
+  font-size: 1.1rem;
+}
+
+/* Rank Highlights */
+.rank-gold {
+  background: rgba(255, 215, 0, 0.1) !important;
+  border-left: 4px solid #ffd700;
+}
+.rank-gold .lb-name, .rank-gold td:first-child {
+  color: #ffd700;
+}
+
+.rank-silver {
+  background: rgba(192, 192, 192, 0.1) !important;
+  border-left: 4px solid #c0c0c0;
+}
+.rank-silver .lb-name, .rank-silver td:first-child {
+  color: #c0c0c0;
+}
+
+.rank-bronze {
+  background: rgba(205, 127, 50, 0.1) !important;
+  border-left: 4px solid #cd7f32;
+}
+.rank-bronze .lb-name, .rank-bronze td:first-child {
+  color: #cd7f32;
+}
