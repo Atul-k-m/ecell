@@ -29,7 +29,6 @@ const crosswordEntrySchema = new mongoose.Schema({
   accuracy: { type: Number, default: null },
   solvedWordsCount: { type: Number, default: 0 },
   registeredAt: { type: Date, default: Date.now },
-  loggedIn: { type: Boolean, default: false },
 });
 
 // Prevent model re-registration in serverless warm-starts
@@ -96,7 +95,7 @@ app.post("/api/crossword/register", async (req, res) => {
     if (trimmedName.toLowerCase() === "team nucleus") {
       entry = await CrosswordEntry.findOneAndUpdate(
         { teamName: trimmedName },
-        { phone, completedAt: null, timeTaken: null, accuracy: null, registeredAt: Date.now(), loggedIn: true },
+        { phone, completedAt: null, timeTaken: null, accuracy: null, registeredAt: Date.now() },
         { new: true, upsert: true }
       );
     } else {
@@ -107,11 +106,6 @@ app.post("/api/crossword/register", async (req, res) => {
       if (existingEntry.completedAt !== null) {
         return res.status(403).json({ success: false, error: "Your team has already completed the crossword!" });
       }
-      if (existingEntry.loggedIn) {
-        return res.status(403).json({ success: false, error: "Your team is already logged in. Only one session per team is allowed." });
-      }
-      // Mark team as logged in
-      await CrosswordEntry.findByIdAndUpdate(existingEntry._id, { loggedIn: true });
       entry = existingEntry;
     }
 
