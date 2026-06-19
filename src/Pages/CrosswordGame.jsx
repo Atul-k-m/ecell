@@ -1083,17 +1083,6 @@ const CrosswordGame = () => {
 
   const [entryId, setEntryId] = useState(null);
 
-  // Restore session from sessionStorage on mount (survives page refresh, clears when tab closes)
-  useEffect(() => {
-    const storedId = sessionStorage.getItem('crosswordEntryId');
-    const storedName = sessionStorage.getItem('crosswordTeamName');
-    if (storedId && storedName) {
-      setEntryId(storedId);
-      setTeamName(storedName);
-      setLoggedIn(true);
-    }
-  }, []);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!teamName.trim()) {
@@ -1112,8 +1101,6 @@ const CrosswordGame = () => {
       });
       const data = await res.json();
       if (data.success) {
-        sessionStorage.setItem('crosswordEntryId', data.entryId);
-        sessionStorage.setItem('crosswordTeamName', teamName.trim());
         setEntryId(data.entryId);
         setLoggedIn(true);
       } else {
