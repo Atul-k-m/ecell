@@ -47,35 +47,6 @@ async function connectDB() {
   dbConnected = true;
 }
 
-// ── Private Answer Data (NEVER sent to the client) ─────────────────────────
-const WORDS_DATA_SECRET = [
-  { id: "v12", dir: "vertical",   word: "URBANCOMPANY", r: 0,  c: 8  },
-  { id: "v6",  dir: "vertical",   word: "GOOGLE",       r: 7,  c: 13 },
-  { id: "v7",  dir: "vertical",   word: "TESLA",        r: 8,  c: 16 },
-  { id: "h11", dir: "horizontal", word: "REDDIT",       r: 9,  c: 15 },
-  { id: "v2",  dir: "vertical",   word: "NETFLIX",      r: 10, c: 10 },
-  { id: "h1",  dir: "horizontal", word: "SKYPE",        r: 11, c: 6  },
-  { id: "v4",  dir: "vertical",   word: "STARBUCKS",    r: 11, c: 6  },
-  { id: "h9",  dir: "horizontal", word: "CULTFIT",      r: 12, c: 0  },
-  { id: "h3",  dir: "horizontal", word: "TELEGRAM",     r: 12, c: 10 },
-  { id: "h5",  dir: "horizontal", word: "LENSKART",     r: 14, c: 10 },
-  { id: "v8",  dir: "vertical",   word: "AMAZON",       r: 14, c: 15 },
-  { id: "h15", dir: "horizontal", word: "AIRBNB",       r: 15, c: 3  },
-  { id: "h14", dir: "horizontal", word: "X",            r: 16, c: 10 },
-  { id: "h10", dir: "horizontal", word: "IKEA",         r: 18, c: 5  },
-  { id: "h13", dir: "horizontal", word: "GROWW",        r: 18, c: 13 },
-];
-
-// Build the answer grid (20 rows × 21 cols) from WORDS_DATA_SECRET
-const ANSWER_GRID = Array.from({ length: 20 }, () => Array(21).fill(""));
-WORDS_DATA_SECRET.forEach(w => {
-  for (let i = 0; i < w.word.length; i++) {
-    const r = w.dir === "horizontal" ? w.r : w.r + i;
-    const c = w.dir === "horizontal" ? w.c + i : w.c;
-    ANSWER_GRID[r][c] = w.word[i];
-  }
-});
-
 // ── Routes ───────────────────────────────────────────────────────────────────
 
 // GET /api/crossword/status
@@ -187,64 +158,6 @@ app.get("/api/crossword/leaderboard", async (req, res) => {
       { teamName: 1, timeTaken: 1, completedAt: 1, solvedWordsCount: 1 }  // only return needed fields
     ).sort({ solvedWordsCount: -1, timeTaken: 1 }); // descending by words solved, then fastest first
     res.json({ success: true, entries });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-// POST /api/crossword/validate  (live word-completion check, called on each keystroke)
-app.post("/api/crossword/validate", async (req, res) => {
-  try {
-    await connectDB();
-    const { entryId, grid, changedCell } = req.body;
-    if (!entryId) return res.status(400).json({ success: false, error: "entryId required" });
-    const entry = await CrosswordEntry.findById(entryId);
-    if (!entry || !entry.loggedIn) return res.status(403).json({ success: false, error: "Unauthorized" });
-
-    const { r, c } = changedCell;
-    // Only check words that overlap the cell that just changed
-    const affectedWords = WORDS_DATA_SECRET.filter(w => {
-      if (w.dir === "horizontal") return r === w.r && c >= w.c && c < w.c + w.word.length;
-      return c === w.c && r >= w.r && r < w.r + w.word.length;
-    });
-
-    const correctWordIds = [];
-    affectedWords.forEach(w => {
-      let ok = true;
-      for (let i = 0; i < w.word.length; i++) {
-        const wr = w.dir === "horizontal" ? w.r : w.r + i;
-        const wc = w.dir === "horizontal" ? w.c + i : w.c;
-        if (!grid[wr] || grid[wr][wc] !== ANSWER_GRID[wr][wc]) { ok = false; break; }
-      }
-      if (ok) correctWordIds.push(w.id);
-    });
-
-    res.json({ success: true, correctWordIds });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-// POST /api/crossword/check  (Check Answers button — returns wrong cells & error count)
-app.post("/api/crossword/check", async (req, res) => {
-  try {
-    await connectDB();
-    const { entryId, grid } = req.body;
-    if (!entryId) return res.status(400).json({ success: false, error: "entryId required" });
-    const entry = await CrosswordEntry.findById(entryId);
-    if (!entry || !entry.loggedIn) return res.status(403).json({ success: false, error: "Unauthorized" });
-
-    const wrongCells = [];
-    for (let r = 0; r < 20; r++) {
-      for (let c = 0; c < 21; c++) {
-        // Only check playable cells that the user has filled in
-        if (grid[r]?.[c] && grid[r][c] !== "" && ANSWER_GRID[r][c] !== "") {
-          if (grid[r][c] !== ANSWER_GRID[r][c]) wrongCells.push(`${r}-${c}`);
-        }
-      }
-    }
-
-    res.json({ success: true, wrongCells, errorCount: wrongCells.length });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
