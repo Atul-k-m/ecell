@@ -64,6 +64,29 @@ export default function CrosswordAdmin() {
     }
   };
 
+  const handleResetSessions = async () => {
+    if (!window.confirm('Reset all team sessions? Teams will need to log in again.')) return;
+    setActionLoading(true);
+    try {
+      const res = await fetch('/api/crossword/admin/reset-sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: ADMIN_PASSWORD }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(`Sessions reset. ${data.resetCount} team(s) can now log in again.`);
+        fetchEntries();
+      } else {
+        alert('Reset failed: ' + data.error);
+      }
+    } catch (err) {
+      alert('Network error.');
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
   const formatTime = (seconds) => {
     if (!seconds) return '—';
     const m = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -163,6 +186,13 @@ export default function CrosswordAdmin() {
             >
               ■ Stop Game
             </button>
+            <button
+              onClick={handleResetSessions}
+              disabled={actionLoading}
+              style={{ padding: '10px 20px', background: '#1e293b', color: '#f59e0b', border: '2px solid #f59e0b', borderRadius: '8px', cursor: 'pointer', fontWeight: 700, fontSize: '0.9rem', boxShadow: '3px 3px 0px #b45309' }}
+            >
+              ↺ Reset Sessions
+            </button>
           </div>
         </div>
       </div>
@@ -195,6 +225,7 @@ export default function CrosswordAdmin() {
                   <th>Team Name</th>
                   <th>Phone</th>
                   <th>Registered At</th>
+                  <th>Session</th>
                   <th>Completed</th>
                   <th>Time</th>
                   <th>Accuracy</th>
@@ -207,6 +238,7 @@ export default function CrosswordAdmin() {
                     <td><strong>{e.teamName}</strong></td>
                     <td>+91 {e.phone}</td>
                     <td>{new Date(e.registeredAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'short', timeStyle: 'short' })}</td>
+                    <td style={{ color: e.loggedIn ? '#22c55e' : '#94a3b8', fontWeight: e.loggedIn ? 700 : 400 }}>{e.loggedIn ? '🟢 Active' : '○ Out'}</td>
                     <td>{e.completedAt ? '✅' : '—'}</td>
                     <td>{formatTime(e.timeTaken)}</td>
                     <td>{e.accuracy != null ? `${e.accuracy}%` : '—'}</td>

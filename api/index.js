@@ -29,6 +29,7 @@ const crosswordEntrySchema = new mongoose.Schema({
   accuracy: { type: Number, default: null },
   solvedWordsCount: { type: Number, default: 0 },
   registeredAt: { type: Date, default: Date.now },
+  loggedIn: { type: Boolean, default: false },
 });
 
 // Prevent model re-registration in serverless warm-starts
@@ -44,6 +45,12 @@ async function connectDB() {
   }
   await mongoose.connect(process.env.MONGODB_URI);
   dbConnected = true;
+
+  // One-time migration: backfill loggedIn:false for documents that predate the field
+  await CrosswordEntry.updateMany(
+    { loggedIn: { $exists: false } },
+    { $set: { loggedIn: false } }
+  );
 }
 
 // ── Routes ───────────────────────────────────────────────────────────────────
@@ -106,6 +113,10 @@ app.post("/api/crossword/register", async (req, res) => {
       if (existingEntry.completedAt !== null) {
         return res.status(403).json({ success: false, error: "Your team has already completed the crossword!" });
       }
+      if (existingEntry.loggedIn) {
+        return res.status(403).json({ success: false, error: "Your team is already logged in on another device. Only one session per team is allowed." });
+      }
+      await CrosswordEntry.findByIdAndUpdate(existingEntry._id, { loggedIn: true });
       entry = existingEntry;
     }
 
@@ -152,6 +163,21 @@ app.get("/api/crossword/leaderboard", async (req, res) => {
       { teamName: 1, timeTaken: 1, completedAt: 1, solvedWordsCount: 1 }  // only return needed fields
     ).sort({ solvedWordsCount: -1, timeTaken: 1 }); // descending by words solved, then fastest first
     res.json({ success: true, entries });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /api/crossword/admin/reset-sessions  (admin — clears all loggedIn flags)
+app.post("/api/crossword/admin/reset-sessions", async (req, res) => {
+  try {
+    await connectDB();
+    const { password } = req.body;
+    if (password !== "ansuansu") {
+      return res.status(403).json({ success: false, error: "Unauthorized" });
+    }
+    const result = await CrosswordEntry.updateMany({}, { $set: { loggedIn: false } });
+    res.json({ success: true, resetCount: result.modifiedCount });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
