@@ -110,9 +110,6 @@ app.post("/api/crossword/register", async (req, res) => {
       if (!existingEntry) {
         return res.status(403).json({ success: false, error: "Team not found or phone number is incorrect. Only pre-registered teams can play." });
       }
-      if (existingEntry.completedAt !== null) {
-        return res.status(403).json({ success: false, error: "Your team has already completed the crossword!" });
-      }
       if (existingEntry.loggedIn) {
         return res.status(403).json({ success: false, error: "Your team is already logged in on another device. Only one session per team is allowed." });
       }
