@@ -464,468 +464,6 @@ const gridStructure = [
   ]
 ];
 
-const answerKey = [
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "U",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "R",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "B",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "A",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "N",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "C",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "O",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "M",
-    "",
-    "",
-    "",
-    "",
-    "G",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "P",
-    "",
-    "",
-    "",
-    "",
-    "O",
-    "",
-    "",
-    "T",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "A",
-    "",
-    "",
-    "",
-    "",
-    "O",
-    "",
-    "R",
-    "E",
-    "D",
-    "D",
-    "I",
-    "T"
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "N",
-    "",
-    "N",
-    "",
-    "",
-    "G",
-    "",
-    "",
-    "S",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "S",
-    "K",
-    "Y",
-    "P",
-    "E",
-    "",
-    "",
-    "L",
-    "",
-    "",
-    "L",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "C",
-    "U",
-    "L",
-    "T",
-    "F",
-    "I",
-    "T",
-    "",
-    "",
-    "",
-    "T",
-    "E",
-    "L",
-    "E",
-    "G",
-    "R",
-    "A",
-    "M",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "A",
-    "",
-    "",
-    "",
-    "F",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "R",
-    "",
-    "",
-    "",
-    "L",
-    "E",
-    "N",
-    "S",
-    "K",
-    "A",
-    "R",
-    "T",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "A",
-    "I",
-    "R",
-    "B",
-    "N",
-    "B",
-    "",
-    "I",
-    "",
-    "",
-    "",
-    "",
-    "M",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "U",
-    "",
-    "",
-    "",
-    "X",
-    "",
-    "",
-    "",
-    "",
-    "A",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "C",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "Z",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "I",
-    "K",
-    "E",
-    "A",
-    "",
-    "",
-    "",
-    "",
-    "G",
-    "R",
-    "O",
-    "W",
-    "W",
-    "",
-    "",
-    ""
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "S",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "N",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ]
-];
 
 const wordsData = [
   {
@@ -933,7 +471,7 @@ const wordsData = [
     "num": 1,
     "dir": "vertical",
     "text": "Need a plumber, electrician, beautician, or furniture assembly expert? I somehow know all of them. Who am I?",
-    "word": "URBANCOMPANY",
+    "wordLength": 12,
     "r": 0,
     "c": 8
   },
@@ -942,7 +480,7 @@ const wordsData = [
     "num": 2,
     "dir": "vertical",
     "text": "Started in a garage and now answers questions nobody in your group chat can. Who am I?",
-    "word": "GOOGLE",
+    "wordLength": 6,
     "r": 7,
     "c": 13
   },
@@ -951,7 +489,7 @@ const wordsData = [
     "num": 3,
     "dir": "vertical",
     "text": "I'm famous for making cars that barely make noise. Who am I?",
-    "word": "TESLA",
+    "wordLength": 5,
     "r": 8,
     "c": 16
   },
@@ -960,7 +498,7 @@ const wordsData = [
     "num": 4,
     "dir": "horizontal",
     "text": "The front page of the internet and the comment section of chaos. Who am I?",
-    "word": "REDDIT",
+    "wordLength": 6,
     "r": 9,
     "c": 15
   },
@@ -969,7 +507,7 @@ const wordsData = [
     "num": 5,
     "dir": "vertical",
     "text": "I used to send DVDs to people's homes. Now I send cliffhangers directly to your brain. Who am I?",
-    "word": "NETFLIX",
+    "wordLength": 7,
     "r": 10,
     "c": 10
   },
@@ -978,7 +516,7 @@ const wordsData = [
     "num": 6,
     "dir": "horizontal",
     "text": "Before Zoom, I was the king of frozen faces and awkward calls. Who am I?",
-    "word": "SKYPE",
+    "wordLength": 5,
     "r": 11,
     "c": 6
   },
@@ -987,7 +525,7 @@ const wordsData = [
     "num": 6,
     "dir": "vertical",
     "text": "I know exactly how to spell your name. I just choose not to. Who am I?",
-    "word": "STARBUCKS",
+    "wordLength": 9,
     "r": 11,
     "c": 6
   },
@@ -996,7 +534,7 @@ const wordsData = [
     "num": 7,
     "dir": "horizontal",
     "text": "A gym membership that follows you everywhere. Who am I?",
-    "word": "CULTFIT",
+    "wordLength": 7,
     "r": 12,
     "c": 0
   },
@@ -1005,7 +543,7 @@ const wordsData = [
     "num": 8,
     "dir": "horizontal",
     "text": "An old-fashioned word for a message and a modern place for endless group chats. Who am I?",
-    "word": "TELEGRAM",
+    "wordLength": 8,
     "r": 12,
     "c": 10
   },
@@ -1014,7 +552,7 @@ const wordsData = [
     "num": 9,
     "dir": "horizontal",
     "text": "I let you try on glasses without stepping outside. If they make you look questionable, send them back. Who am I?",
-    "word": "LENSKART",
+    "wordLength": 8,
     "r": 14,
     "c": 10
   },
@@ -1023,7 +561,7 @@ const wordsData = [
     "num": 10,
     "dir": "vertical",
     "text": "I sold books online before deciding to sell basically the entire planet. Who am I?",
-    "word": "AMAZON",
+    "wordLength": 6,
     "r": 14,
     "c": 15
   },
@@ -1032,7 +570,7 @@ const wordsData = [
     "num": 11,
     "dir": "horizontal",
     "text": "Turned spare bedrooms into a billion-dollar business. Who am I?",
-    "word": "AIRBNB",
+    "wordLength": 6,
     "r": 15,
     "c": 3
   },
@@ -1041,7 +579,7 @@ const wordsData = [
     "num": 12,
     "dir": "horizontal",
     "text": "I was once a bird. Now I'm a letter. Who am I?",
-    "word": "X",
+    "wordLength": 1,
     "r": 16,
     "c": 10
   },
@@ -1050,7 +588,7 @@ const wordsData = [
     "num": 13,
     "dir": "horizontal",
     "text": "I sell furniture and confidence in your ability to follow diagrams. Who am I?",
-    "word": "IKEA",
+    "wordLength": 4,
     "r": 18,
     "c": 5
   },
@@ -1059,7 +597,7 @@ const wordsData = [
     "num": 14,
     "dir": "horizontal",
     "text": "I have an extra letter in my name and hopefully extra money in your future. Who am I?",
-    "word": "GROWW",
+    "wordLength": 5,
     "r": 18,
     "c": 13
   }
@@ -1082,6 +620,11 @@ const CrosswordGame = () => {
   const [loginError, setLoginError] = useState('');
 
   const [entryId, setEntryId] = useState(null);
+
+  // Refs for stable access inside async/debounced callbacks (avoids stale closures)
+  const validateTimerRef = useRef(null);
+  const timeRef = useRef(600);
+  const incorrectAttemptsRef = useRef(0);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -1128,6 +671,10 @@ const CrosswordGame = () => {
   const [incorrectAttempts, setIncorrectAttempts] = useState(0);
   const [showCompletion, setShowCompletion] = useState(false);
   const [activeWordId, setActiveWordId] = useState(null);
+
+  // Keep refs in sync with state for use inside async callbacks
+  useEffect(() => { timeRef.current = time; }, [time]);
+  useEffect(() => { incorrectAttemptsRef.current = incorrectAttempts; }, [incorrectAttempts]);
 
   // Game gating: wait for admin to start
   const [gameStarted, setGameStarted] = useState(false);
@@ -1184,9 +731,9 @@ const CrosswordGame = () => {
     // Find which word(s) this cell belongs to
     const matchingWords = wordsData.filter(w => {
       if (w.dir === 'horizontal') {
-        return r === w.r && c >= w.c && c < w.c + w.word.length;
+        return r === w.r && c >= w.c && c < w.c + w.wordLength;
       } else {
-        return c === w.c && r >= w.r && r < w.r + w.word.length;
+        return c === w.c && r >= w.r && r < w.r + w.wordLength;
       }
     });
 
@@ -1211,34 +758,45 @@ const CrosswordGame = () => {
     }
   }, [focusedCell, direction]);
 
-  const checkWordCorrectness = (wId, currentGrid) => {
-    const w = wordsData.find(x => x.id === wId);
-    if (!w) return false;
-    let isCorrect = true;
-    for (let i = 0; i < w.word.length; i++) {
-      const cr = w.dir === 'horizontal' ? w.r : w.r + i;
-      const cc = w.dir === 'horizontal' ? w.c + i : w.c;
-      if (currentGrid[cr][cc] !== answerKey[cr][cc]) {
-        isCorrect = false;
-        break;
-      }
-    }
-    return isCorrect;
-  };
+  // checkWordCorrectness removed — validation is now server-side via /api/crossword/validate
 
   const isCellInWord = (r, c, wordId) => {
     const w = wordsData.find(x => x.id === wordId);
     if (!w) return false;
     if (w.dir === 'horizontal') {
-      return r === w.r && c >= w.c && c < w.c + w.word.length;
+      return r === w.r && c >= w.c && c < w.c + w.wordLength;
     } else {
-      return c === w.c && r >= w.r && r < w.r + w.word.length;
+      return c === w.c && r >= w.r && r < w.r + w.wordLength;
     }
   };
 
   const isCellCorrect = (r, c) => {
     // If it belongs to ANY correctly fully solved word, it's correct
     return correctWords.some(wId => isCellInWord(r, c, wId));
+  };
+
+  // Debounced server-side word-completion check (called on each cell input)
+  const validateCell = (r, c, currentGrid) => {
+    if (validateTimerRef.current) clearTimeout(validateTimerRef.current);
+    validateTimerRef.current = setTimeout(async () => {
+      try {
+        const res = await fetch('/api/crossword/validate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ entryId, grid: currentGrid, changedCell: { r, c } }),
+        });
+        const data = await res.json();
+        if (data.success && data.correctWordIds?.length > 0) {
+          setCorrectWords(prev => {
+            const added = data.correctWordIds.filter(id => !prev.includes(id));
+            if (added.length === 0) return prev;
+            const updated = [...prev, ...added];
+            checkGameCompletion(updated, timeRef.current, incorrectAttemptsRef.current);
+            return updated;
+          });
+        }
+      } catch (_) { /* silent — game still playable if validate request fails */ }
+    }, 300);
   };
 
   const handleInputChange = (e, r, c) => {
@@ -1257,21 +815,8 @@ const CrosswordGame = () => {
       setWrongCells(prev => prev.filter(id => id !== cellIdStr));
     }
 
-    // Live validation: check ALL words that contain this cell
-    // (not just activeWordId — fixes intersection cell bug)
-    const newlyCorrect = [];
-    wordsData.forEach(w => {
-      if (!correctWords.includes(w.id) && !newlyCorrect.includes(w.id)) {
-        if (isCellInWord(r, c, w.id) && checkWordCorrectness(w.id, newGrid)) {
-          newlyCorrect.push(w.id);
-        }
-      }
-    });
-    if (newlyCorrect.length > 0) {
-      const updatedCorrect = [...correctWords, ...newlyCorrect];
-      setCorrectWords(updatedCorrect);
-      checkGameCompletion(updatedCorrect, time, incorrectAttempts);
-    }
+    // Live validation: debounced server-side check for words overlapping this cell
+    if (val !== '') validateCell(r, c, newGrid);
 
     // Auto-advance (skip already correct "green" cells)
     if (val !== '') {
@@ -1340,23 +885,22 @@ const CrosswordGame = () => {
     }
   };
 
-  const handleCheckAnswers = () => {
-    let newWrongCells = [];
-    let errorCount = 0;
-    
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        if (gridStructure[r][c] === 1 && grid[r][c] !== '') {
-          if (grid[r][c] !== answerKey[r][c]) {
-            newWrongCells.push(`${r}-${c}`);
-            errorCount++;
-          }
+  const handleCheckAnswers = async () => {
+    try {
+      const res = await fetch('/api/crossword/check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ entryId, grid }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setWrongCells(data.wrongCells);
+        if (data.errorCount > 0) {
+          setIncorrectAttempts(prev => prev + data.errorCount);
         }
       }
-    }
-    setWrongCells(newWrongCells);
-    if (errorCount > 0) {
-      setIncorrectAttempts(prev => prev + errorCount);
+    } catch (_) {
+      console.error('Check answers request failed');
     }
   };
 
