@@ -20,7 +20,7 @@
 }
 
 .dummy-leaderboard-container {
-  max-width: 480px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -221,9 +221,14 @@
 }
 
 .leaderboard-table th.col-rank {
-  width: 30%;
+  width: 12%;
   text-align: center;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.leaderboard-table th.col-score {
+  text-align: center;
+  width: 15%;
 }
 
 .leaderboard-table th.col-team {
@@ -250,6 +255,10 @@
 }
 
 .leaderboard-table td.cell-team {
+  /* text-align is overridden inline to left */
+}
+
+.leaderboard-table td.cell-score {
   text-align: center;
 }
 
