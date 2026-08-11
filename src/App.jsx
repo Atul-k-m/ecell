@@ -61,6 +61,7 @@ const PanelDiscussion = lazy(
 );
 const Ripoff = lazy(() => import("./components/Events/Ripoff"));
 const Team = lazy(() => import("./Pages/Team"));
+const Mentors = lazy(() => import("./Pages/Mentors"));
 const WordOfTheDay = lazy(() => import("./Pages/WordOfTheDay.jsx"));
 const WordDetailPage = lazy(() => import("./Pages/WordDetailPage.jsx"));
 const WordAdmin = lazy(() => import("./Pages/WordAdmin.jsx"));
@@ -228,6 +229,7 @@ function App() {
                     />
                     <Route path="/events/ripoff" element={<Ripoff />} />
                     <Route path="/alumni" element={<Alumni />} />
+                    <Route path="/mentors" element={<Mentors />} />
                     <Route path="/team" element={<Team />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route

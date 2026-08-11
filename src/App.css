@@ -16,7 +16,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   /* Add this to body as well */
 }
 
@@ -26,7 +26,7 @@ body {
   margin: 0 auto;
   width: 100%;
   text-align: center;
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   /* Prevent horizontal scroll */
 
 }

@@ -1,0 +1,546 @@
+[
+  {
+    "id": 1,
+    "name": "Alishba Garcia",
+    "role": "Venture Partner at Synex Medical",
+    "industries": [
+      "Semiconductors",
+      "Hardware",
+      "Healthcare"
+    ],
+    "bio": "Early employee at Synex Medical, backed by top tier VC firms. Focusing heavily on the intersection of Semiconductors and Hardware.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo1",
+    "image": "/mentors/1.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Jay Imran",
+    "role": "CEO at Biotein",
+    "industries": [
+      "Biotech",
+      "Artificial Intelligence",
+      "Biosensors",
+      "EdTech"
+    ],
+    "bio": "Currently exploring new frontiers in Artificial Intelligence. Advisor to several startups in the Biotech space.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo2",
+    "image": "/mentors/2.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Ben Parthasarthy",
+    "role": "Co-founder at EvolutionaryScale",
+    "industries": [
+      "Fintech",
+      "Hardware"
+    ],
+    "bio": "Specializes in Hardware and scalable systems. Frequently speaks at industry conferences about Fintech.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo3",
+    "image": "/mentors/3.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Nina Kim",
+    "role": "Early Employee at Contrary",
+    "industries": [
+      "Hardware",
+      "Life Sciences",
+      "Cybersecurity"
+    ],
+    "bio": "Former researcher turned entrepreneur. Building next-generation tools for Hardware at Contrary.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo4",
+    "image": "/mentors/4.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Rahul Rodriguez",
+    "role": "Co-founder at Biotein",
+    "industries": [
+      "Semiconductors",
+      "Healthcare",
+      "Climate Tech"
+    ],
+    "bio": "Specializes in Healthcare and scalable systems. Frequently speaks at industry conferences about Semiconductors.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo5",
+    "image": "/mentors/5.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Sophia White",
+    "role": "Research Engineer at EvolutionaryScale",
+    "industries": [
+      "Human Longevity",
+      "Robotics"
+    ],
+    "bio": "Specializes in Robotics and scalable systems. Frequently speaks at industry conferences about Human Longevity.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo6",
+    "image": "/mentors/6.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "David Johnson",
+    "role": "Head of Growth at EvolutionaryScale",
+    "industries": [
+      "Artificial Intelligence",
+      "Biotech",
+      "Healthcare",
+      "Human Longevity"
+    ],
+    "bio": "Working on projects and research at EvolutionaryScale. Previously scaled teams at top tech giants.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo7",
+    "image": "/mentors/7.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Elena Garcia",
+    "role": "Principal Researcher at Biotein",
+    "industries": [
+      "Life Sciences",
+      "Cybersecurity"
+    ],
+    "bio": "Passionate about building the future of Life Sciences. Led multiple successful product launches at Biotein.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo8",
+    "image": "/mentors/8.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Michael White",
+    "role": "Product Manager at Scale AI",
+    "industries": [
+      "Climate Tech",
+      "Cybersecurity",
+      "Machine Learning",
+      "Artificial Intelligence"
+    ],
+    "bio": "Co-founded a platform for accelerating discoveries in Climate Tech. Raised significant seed funding and published extensive research.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo9",
+    "image": "/mentors/9.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Aisha Kim",
+    "role": "Software Engineer at OpenAI",
+    "industries": [
+      "Machine Learning",
+      "Healthcare",
+      "Fintech",
+      "Hardware"
+    ],
+    "bio": "Passionate about building the future of Machine Learning. Led multiple successful product launches at OpenAI.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo10",
+    "image": "/mentors/10.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "James Jackson",
+    "role": "Director of Engineering at Atomic Semi",
+    "industries": [
+      "Artificial Intelligence",
+      "Semiconductors"
+    ],
+    "bio": "Former researcher turned entrepreneur. Building next-generation tools for Artificial Intelligence at Atomic Semi.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo11",
+    "image": "/mentors/11.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Priya Lee",
+    "role": "Principal Researcher at Tecton",
+    "industries": [
+      "Machine Learning",
+      "Biotech",
+      "Semiconductors"
+    ],
+    "bio": "Working on projects and research at Tecton. Previously scaled teams at top tech giants.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo12",
+    "image": "/mentors/12.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "William Lee",
+    "role": "Founder at NVIDIA",
+    "industries": [
+      "Biotech",
+      "Biosensors",
+      "Climate Tech",
+      "Artificial Intelligence"
+    ],
+    "bio": "Former researcher turned entrepreneur. Building next-generation tools for Biotech at NVIDIA.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo13",
+    "image": "/mentors/13.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Zoe Anderson",
+    "role": "Angel Investor at Synex Medical",
+    "industries": [
+      "Quantum Computing",
+      "Robotics",
+      "Artificial Intelligence"
+    ],
+    "bio": "Currently exploring new frontiers in Robotics. Advisor to several startups in the Quantum Computing space.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo14",
+    "image": "/mentors/14.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Lucas White",
+    "role": "Founder at Stripe",
+    "industries": [
+      "Space Tech",
+      "Climate Tech",
+      "Healthcare",
+      "Fintech"
+    ],
+    "bio": "Co-founded a platform for accelerating discoveries in Space Tech. Raised significant seed funding and published extensive research.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo15",
+    "image": "/mentors/15.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Maya Davis",
+    "role": "Product Manager at Contrary",
+    "industries": [
+      "Quantum Computing",
+      "Semiconductors",
+      "Climate Tech"
+    ],
+    "bio": "Former researcher turned entrepreneur. Building next-generation tools for Quantum Computing at Contrary.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo16",
+    "image": "/mentors/16.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Alexander Moore",
+    "role": "Research Engineer at Stripe",
+    "industries": [
+      "Biosensors",
+      "Quantum Computing",
+      "Human Longevity",
+      "EdTech"
+    ],
+    "bio": "Currently exploring new frontiers in Quantum Computing. Advisor to several startups in the Biosensors space.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo17",
+    "image": "/mentors/17.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Chloe Martinez",
+    "role": "Director of Engineering at NVIDIA",
+    "industries": [
+      "Semiconductors",
+      "Cybersecurity",
+      "Biotech",
+      "Life Sciences"
+    ],
+    "bio": "Currently exploring new frontiers in Cybersecurity. Advisor to several startups in the Semiconductors space.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo18",
+    "image": "/mentors/18.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Daniel Rodriguez",
+    "role": "Technical Staff at Atomic Semi",
+    "industries": [
+      "Machine Learning",
+      "Climate Tech",
+      "Cybersecurity",
+      "Space Tech"
+    ],
+    "bio": "Currently exploring new frontiers in Climate Tech. Advisor to several startups in the Machine Learning space.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo19",
+    "image": "/mentors/19.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Fatima Anderson",
+    "role": "Data Scientist at Stripe",
+    "industries": [
+      "Hardware",
+      "Semiconductors"
+    ],
+    "bio": "Early employee at Stripe, backed by top tier VC firms. Focusing heavily on the intersection of Hardware and Semiconductors.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo20",
+    "image": "/mentors/20.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Matthew Anderson",
+    "role": "Technical Staff at Tecton",
+    "industries": [
+      "Human Longevity",
+      "Biotech",
+      "Hardware",
+      "Machine Learning"
+    ],
+    "bio": "Working on projects and research at Tecton. Previously scaled teams at top tech giants.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo21",
+    "image": "/mentors/21.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Isabella Brown",
+    "role": "Director of Engineering at Synex Medical",
+    "industries": [
+      "Life Sciences",
+      "Artificial Intelligence"
+    ],
+    "bio": "Co-founded a platform for accelerating discoveries in Life Sciences. Raised significant seed funding and published extensive research.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo22",
+    "image": "/mentors/22.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Christopher Khera",
+    "role": "Product Manager at Google DeepMind",
+    "industries": [
+      "Biosensors",
+      "Life Sciences",
+      "Cybersecurity"
+    ],
+    "bio": "Former researcher turned entrepreneur. Building next-generation tools for Biosensors at Google DeepMind.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo23",
+    "image": "/mentors/23.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Olivia Patel",
+    "role": "Early Employee at Stripe",
+    "industries": [
+      "Biotech",
+      "Climate Tech"
+    ],
+    "bio": "Early employee at Stripe, backed by top tier VC firms. Focusing heavily on the intersection of Biotech and Climate Tech.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo24",
+    "image": "/mentors/24.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Andrew Wong",
+    "role": "CEO at Tecton",
+    "industries": [
+      "Biotech",
+      "Machine Learning",
+      "Cybersecurity",
+      "Biosensors"
+    ],
+    "bio": "Former researcher turned entrepreneur. Building next-generation tools for Biotech at Tecton.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo25",
+    "image": "/mentors/25.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Emma Chen",
+    "role": "Head of Growth at Anthropic",
+    "industries": [
+      "Machine Learning",
+      "Healthcare",
+      "Biotech"
+    ],
+    "bio": "Specializes in Healthcare and scalable systems. Frequently speaks at industry conferences about Machine Learning.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo26",
+    "image": "/mentors/26.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Joshua Parthasarthy",
+    "role": "Angel Investor at SpaceX",
+    "industries": [
+      "Quantum Computing",
+      "Artificial Intelligence"
+    ],
+    "bio": "Early employee at SpaceX, backed by top tier VC firms. Focusing heavily on the intersection of Quantum Computing and Artificial Intelligence.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo27",
+    "image": "/mentors/27.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Ava Rodriguez",
+    "role": "Founder at Atomic Semi",
+    "industries": [
+      "Biotech",
+      "Hardware",
+      "Biosensors",
+      "Robotics"
+    ],
+    "bio": "Co-founded a platform for accelerating discoveries in Biotech. Raised significant seed funding and published extensive research.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo28",
+    "image": "/mentors/28.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Ryan Gupta",
+    "role": "Head of Growth at EvolutionaryScale",
+    "industries": [
+      "Fintech",
+      "Climate Tech",
+      "Quantum Computing",
+      "Web3"
+    ],
+    "bio": "Early employee at EvolutionaryScale, backed by top tier VC firms. Focusing heavily on the intersection of Fintech and Climate Tech.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo29",
+    "image": "/mentors/29.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Mia Brown",
+    "role": "CEO at Anthropic",
+    "industries": [
+      "Space Tech",
+      "Hardware"
+    ],
+    "bio": "Working on projects and research at Anthropic. Previously scaled teams at top tech giants.\n\nAlways looking to mentor driven individuals looking to break into the industry.",
+    "linkedin": "https://linkedin.com/in/demo30",
+    "image": "/mentors/30.jpg",
+    "articles": [
+      "Semantic Mechanical Search with Large Vision and Language Models",
+      "Just got my author copy of ai for robotics activity",
+      "Student-entrepreneur: You don't have to wait to change the world"
+    ]
+  }
+]
