@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Mail, Linkedin } from "lucide-react";
 
 import ali from "./assets/mdAli.jpeg";
 import meghana from "./assets/meghana.jpg";
@@ -22,53 +21,6 @@ import bhanuImg from "./assets/team/bhanu.JPG";
 import fardeeImg from "./assets/team/fardeen.jpeg";
 
 import Footer from "../components/Footer/Footer";
-
-// Extracted StatCard to prevent heavy mobile re-renders
-const StatCard = ({ stat, index }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: 0.8,
-        delay: index * 0.15,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="text-center"
-    >
-      <div className="relative group">
-        <div className="text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black mb-6 relative">
-          <span
-            className="bg-clip-text text-transparent"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, #FD7722, #ff8c42, #FD7722)",
-            }}
-          >
-            {stat.value}
-          </span>
-          {stat.suffix && (
-            <span
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, #FD7722, #ff8c42, #FD7722)",
-              }}
-            >
-              {stat.suffix}
-            </span>
-          )}
-        </div>
-        <div className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed whitespace-pre-line font-sans">
-          {stat.label}
-        </div>
-        {/* Floating accent */}
-        <div className="absolute -top-4 -right-4 w-2 h-16 bg-gradient-to-b from-[#FD7722] to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
-      </div>
-    </motion.div>
-  );
-};
 
 // Extracted AlumniCard to prevent heavy mobile re-renders
 const AlumniCard = ({ member, index }) => {
@@ -134,12 +86,7 @@ const AlumniCard = ({ member, index }) => {
   );
 };
 
-const EcellAlumniPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const alumniData = {
+const alumniData = {
     members: [
       {
         id: 1,
@@ -280,6 +227,11 @@ const EcellAlumniPage = () => {
     ],
   };
 
+const EcellAlumniPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const batches = Array.from(new Set(alumniData.members.map(m => m.year))).sort((a, b) => a.localeCompare(b));
   const [activeBatch, setActiveBatch] = useState(batches[batches.length - 1] || "2025/26");
   const filteredMembers = alumniData.members.filter(m => m.year === activeBatch);
@@ -303,7 +255,7 @@ const EcellAlumniPage = () => {
               className="text-5xl md:text-7xl lg:text-[90px] font-bold uppercase text-center leading-[0.9] tracking-tighter text-black mb-10 mt-10"
               style={{ fontFamily: "'Nhass', sans-serif" }}
             >
-              Our Alumini Network
+              Our Alumni Network
             </h2>
           </motion.div>
 
