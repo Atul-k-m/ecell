@@ -116,7 +116,8 @@ function App() {
     if (
       location.pathname === "/gallery" || 
       location.pathname === "/team" || 
-      location.pathname === "/recap"
+      location.pathname === "/recap" ||
+      location.pathname === "/alumni"
     ) {
       setIsLightMode(false);
     } else {
@@ -254,7 +255,7 @@ function App() {
               </motion.div>
             )}
           </AnimatePresence>
-          {!loading && !isSpl3 && location.pathname !== "/team" && location.pathname !== "/recap" && (
+          {!loading && !isSpl3 && location.pathname !== "/team" && location.pathname !== "/recap" && location.pathname !== "/alumni" && (
             <button
               type="button"
               role="switch"

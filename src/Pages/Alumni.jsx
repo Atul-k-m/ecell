@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Mail, Linkedin } from "lucide-react";
 
 import ali from "./assets/mdAli.jpeg";
 import meghana from "./assets/meghana.jpg";
@@ -10,6 +11,15 @@ import syeeda from "./assets/syeeda.jpg";
 import adithya from "./assets/adithya.jpg";
 import gul from "./assets/gul.jpeg";
 import sarvani from "./assets/sarvani.jpg";
+
+import maxsonImg from "./assets/team/maxson.JPG";
+import mohitImg from "./assets/team/mohit.jpeg";
+import nishithaImg from "./assets/team/nishitha.jpeg";
+import gaganjithImg from "./assets/team/gaganjith.jpg";
+import shriyaImg from "./assets/team/shriya.jpg";
+import hiteshImg from "./assets/team/hitesh.jpeg";
+import bhanuImg from "./assets/team/bhanu.JPG";
+import fardeeImg from "./assets/team/fardeen.jpeg";
 
 import Footer from "../components/Footer/Footer";
 
@@ -74,54 +84,51 @@ const AlumniCard = ({ member, index }) => {
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="relative group cursor-pointer"
+      className="relative cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden border-2 transition-all duration-500 ${
-          isHovered
-            ? "border-[#FD7722] shadow-2xl shadow-[#FD7722]/20 scale-105"
-            : "border-gray-700 hover:border-gray-600"
-        }`}
+        className="w-full relative transition-all duration-500 ease-out rounded-[28px]"
+        style={{
+          transform: isHovered ? "translate(8px, -8px)" : "translate(0px, 0px)",
+          boxShadow: isHovered ? `-16px 16px 0px ${member.color}` : "0px 0px 0px transparent",
+        }}
       >
         {/* Image Container */}
-        <div className="aspect-[4/5] relative overflow-hidden bg-gradient-to-br from-gray-700 to-gray-800">
+        <div className="aspect-square relative overflow-hidden rounded-[28px] bg-slate-100">
           <img
             src={member.image}
             alt={member.name}
             loading="lazy"
-            className={`w-full h-full object-cover transition-all duration-700 ${
-              isHovered
-                ? "scale-110 grayscale-0"
-                : "scale-100 grayscale hover:grayscale-[50%]"
-            }`}
+            className="w-full h-full object-cover"
           />
-          {/* Overlay */}
-          <div
-            className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-500 ${isHovered ? "opacity-40" : "opacity-20"}`}
-          ></div>
-          {/* Floating accent line */}
-          <div
-            className={`absolute top-4 right-4 w-1 h-12 bg-gradient-to-b from-[#FD7722] to-transparent transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`}
-          ></div>
+          {/* Grayscale Overlay - Bypasses Dark Mode Extension Bugs */}
+          <div 
+            className="absolute inset-0 pointer-events-none transition-opacity duration-700"
+            style={{
+              backdropFilter: "grayscale(100%)",
+              WebkitBackdropFilter: "grayscale(100%)",
+              opacity: isHovered ? 0 : 1
+            }}
+          />
         </div>
-        {/* Content */}
-        <div className="p-8 relative">
-          <h3
-            className={`text-2xl lg:text-3xl font-bold mb-3 transition-colors duration-300 ${isHovered ? "text-[#FD7722]" : "text-white"} font-serif`}
-          >
-            {member.name}
-          </h3>
-          <p className="text-[#FD7722] font-semibold mb-2 text-xl font-sans">
-            {member.position}
-          </p>
-          <p className="text-gray-400 text-lg font-sans">{member.year}</p>
-          {/* Bottom accent line */}
-          <div
-            className={`absolute bottom-0 left-8 right-8 h-0.5 bg-gradient-to-r from-[#FD7722] via-transparent to-[#FD7722] transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`}
-          ></div>
-        </div>
+      </div>
+      
+      {/* Content Below Image */}
+      <div className="flex flex-col items-start mt-5 px-0 w-full text-left">
+        <h3 
+          className="text-[22px] md:text-[24px] text-black tracking-wide leading-[1.1]"
+          style={{ fontFamily: "'Robit', sans-serif" }}
+        >
+          {member.name}
+        </h3>
+        <p 
+          className="text-slate-500 font-medium text-[0.75rem] md:text-[0.85rem] uppercase tracking-[0.2em] mt-2"
+          style={{ fontFamily: "'SuisseIntl', monospace, sans-serif" }}
+        >
+          {member.position}
+        </p>
       </div>
     </motion.div>
   );
@@ -140,7 +147,7 @@ const EcellAlumniPage = () => {
         position: "President",
         year: "2024/25",
         image: shashank,
-        color: "#FD7722",
+        color: "#9e3cec",
       },
       {
         id: 2,
@@ -148,7 +155,7 @@ const EcellAlumniPage = () => {
         position: "Mentor",
         year: "2024/25",
         image: adithya,
-        color: "#8B5CF6",
+        color: "#f97315",
       },
       {
         id: 3,
@@ -156,7 +163,7 @@ const EcellAlumniPage = () => {
         position: "Tech Head",
         year: "2024/25",
         image: ali,
-        color: "#F59E0B",
+        color: "#14c9e1",
       },
       {
         id: 4,
@@ -164,7 +171,7 @@ const EcellAlumniPage = () => {
         position: "Design Head",
         year: "2024/25",
         image: syeeda,
-        color: "#EC4899",
+        color: "#9e3cec",
       },
       {
         id: 5,
@@ -172,7 +179,7 @@ const EcellAlumniPage = () => {
         position: "Operations Head",
         year: "2024/25",
         image: suhas,
-        color: "#10B981",
+        color: "#f97315",
       },
       {
         id: 6,
@@ -180,7 +187,7 @@ const EcellAlumniPage = () => {
         position: "Marketing Head",
         year: "2024/25",
         image: chandana,
-        color: "#3B82F6",
+        color: "#14c9e1",
       },
       {
         id: 7,
@@ -188,7 +195,7 @@ const EcellAlumniPage = () => {
         position: "Marketing Vice Head",
         year: "2024/25",
         image: sarvani,
-        color: "#14B8A6",
+        color: "#9e3cec",
       },
       {
         id: 8,
@@ -196,7 +203,7 @@ const EcellAlumniPage = () => {
         position: "Content Vice Head",
         year: "2024/25",
         image: meghana,
-        color: "#EF4444",
+        color: "#f97315",
       },
       {
         id: 9,
@@ -204,13 +211,85 @@ const EcellAlumniPage = () => {
         position: "Operations Vice Head",
         year: "2024/25",
         image: gul,
-        color: "#6366F1",
+        color: "#14c9e1",
+      },
+      {
+        id: 10,
+        name: "Maxson Mathew",
+        position: "President",
+        year: "2025/26",
+        image: maxsonImg,
+        color: "#9e3cec",
+      },
+      {
+        id: 11,
+        name: "Mohit Monnappa T N",
+        position: "Mentor",
+        year: "2025/26",
+        image: mohitImg,
+        color: "#f97315",
+      },
+      {
+        id: 12,
+        name: "Nishitha Bodipati",
+        position: "Vice President",
+        year: "2025/26",
+        image: nishithaImg,
+        color: "#14c9e1",
+      },
+      {
+        id: 13,
+        name: "Gaganjith R",
+        position: "Events Head",
+        year: "2025/26",
+        image: gaganjithImg,
+        color: "#9e3cec",
+      },
+      {
+        id: 14,
+        name: "Shriya Chowdary",
+        position: "Content Head",
+        year: "2025/26",
+        image: shriyaImg,
+        color: "#f97315",
+      },
+      {
+        id: 15,
+        name: "Hitesh R",
+        position: "Media Head",
+        year: "2025/26",
+        image: hiteshImg,
+        color: "#14c9e1",
+      },
+      {
+        id: 16,
+        name: "Bhanu Prasad N",
+        position: "Media Vice Head",
+        year: "2025/26",
+        image: bhanuImg,
+        color: "#9e3cec",
+      },
+      {
+        id: 17,
+        name: "Fardeen Khan K",
+        position: "Corporate Relations Head",
+        year: "2025/26",
+        image: fardeeImg,
+        color: "#f97315",
       },
     ],
   };
 
+  const batches = Array.from(new Set(alumniData.members.map(m => m.year))).sort((a, b) => a.localeCompare(b));
+  const [activeBatch, setActiveBatch] = useState(batches[batches.length - 1] || "2025/26");
+  const filteredMembers = alumniData.members.filter(m => m.year === activeBatch);
+
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div 
+      className="bg-white text-black min-h-screen"
+      data-darkreader-ignore
+      style={{ colorScheme: 'only light' }}
+    >
       <section className="py-24 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -218,18 +297,63 @@ const EcellAlumniPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-20"
+            className="mb-12"
           >
-            <h2 className="text-5xl lg:text-7xl xl:text-8xl font-black text-center leading-tight font-serif">
-              OUR <span className="text-[#FD7722]">ALUMNI</span>
-              <br />
-              NETWORK
+            <h2 
+              className="text-5xl md:text-7xl lg:text-[90px] font-bold uppercase text-center leading-[0.9] tracking-tighter text-black mb-10 mt-10"
+              style={{ fontFamily: "'Nhass', sans-serif" }}
+            >
+              Our Alumini Network
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#FD7722] to-transparent mx-auto mt-8"></div>
+          </motion.div>
+
+          {/* Toggle UI Matching Screenshot */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="flex justify-center mb-16"
+          >
+            <div 
+              data-darkreader-ignore
+              className="flex items-center p-1.5 rounded-full shadow-[0_8px_24px_rgba(221,85,0,0.3)]"
+              style={{ backgroundColor: '#dd5500', colorScheme: 'only light' }}
+            >
+              {batches.map((batch) => {
+                const isActive = activeBatch === batch;
+                const batchYear = batch.split('/')[0];
+                return (
+                  <div
+                    key={batch}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setActiveBatch(batch)}
+                    className="relative px-8 py-3 rounded-full text-[16px] tracking-wide transition-colors duration-300 outline-none cursor-pointer"
+                    style={{ 
+                      WebkitTapHighlightColor: "transparent",
+                      color: isActive ? "#dd5500" : "rgba(255, 255, 255, 0.99)",
+                      fontFamily: "'Robit', sans-serif"
+                    }}
+                  >
+                    {isActive && (
+                      <motion.div
+                        data-darkreader-ignore
+                        layoutId="active-batch-pill"
+                        className="absolute inset-0 rounded-full"
+                        style={{ backgroundColor: '#ffffff', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}
+                        transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                      />
+                    )}
+                    <span className="relative z-10">Class of {batchYear}</span>
+                  </div>
+                );
+              })}
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
-            {alumniData.members.map((member, index) => (
+            {filteredMembers.map((member, index) => (
               <AlumniCard key={member.id} member={member} index={index} />
             ))}
           </div>
