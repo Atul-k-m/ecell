@@ -44,7 +44,7 @@ const AlumniCard = ({ member, index }) => {
         className="w-full relative transition-all duration-500 ease-out rounded-[28px]"
         style={{
           transform: isHovered ? "translate(8px, -8px)" : "translate(0px, 0px)",
-          boxShadow: isHovered ? `-16px 16px 0px ${member.color}` : "0px 0px 0px transparent",
+          boxShadow: isHovered ? `-16px 16px 0px #dd5500` : "0px 0px 0px transparent",
         }}
       >
         {/* Image Container */}
